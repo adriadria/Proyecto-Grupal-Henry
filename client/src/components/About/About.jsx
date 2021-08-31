@@ -1,5 +1,5 @@
 import React from 'react'
-
+// algo
 const About = () => {
     return (
         <div>
