@@ -1,18 +1,15 @@
 const { Router } = require('express');
 
+const getProducts = require('./getProducts');
+const postProduct = require('./postProduct');
+const getCategories = require('./getCategories');
+const postCategory = require('./postCategory');
+
 const router = Router();
 
-const Product = require('../models/Product');
-
-router.get('/', (req, res) => {
-    res.status(200).json({msg: 'it works!'});
-});
-router.post('/', async(req, res) => {
-    console.log(req.body);
-    const product = new Product(req.body);
-    console.log(product);
-    await product.save();
-    res.status(200).json(product);
-})
+router.use('/products', getProducts);
+router.use('/product', postProduct);
+router.use('/categories', getCategories);
+router.use('/category', postCategory);
 
 module.exports =  router;

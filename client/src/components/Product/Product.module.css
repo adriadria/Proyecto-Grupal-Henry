@@ -1,0 +1,27 @@
+.card{
+    background-color: #cfa67c;
+    width: 270px;
+    height: 260px;
+    padding-top: 10px;
+    border-radius: 10px;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card img {
+    width: 240px;
+    height: 180px;
+    border-radius: 12px;
+}
+
+.cardData1{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+
+.cardData2{
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
