@@ -1,10 +1,10 @@
 import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import Home from "./Componentes/Home/Home";
-import About from "./Componentes/About/About";
-import Shop from "./Componentes/Shop/Shop";
-import Help from "./Componentes/Help/Help";
-import Cart from "./Componentes/Cart/Cart";
+import Home from "./components/Home/Home";
+import About from "./components/About/About";
+import Shop from "./components/Shop/Shop";
+import Help from "./components/Help/Help";
+import Cart from "./components/Cart/Cart";
 import './App.css';
 
 function App() {
