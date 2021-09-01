@@ -1,11 +1,9 @@
 import React from 'react'
 
-const Home = () => {
+export default function Error404() {
     return (
         <div>
-            Soy el component Home
+            Soy el Error 404 :(
         </div>
     )
 }
-
-export default Home
