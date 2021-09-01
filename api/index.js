@@ -30,6 +30,6 @@ mongoose.connect('mongodb://localhost/requests')
 });
 
 server.listen(PORT, () => {
-  console.log('%s listening at ', PORT); // eslint-disable-line no-console
+  console.log('listening at ', PORT); // eslint-disable-line no-console
 });
 
