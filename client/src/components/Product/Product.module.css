@@ -1,13 +1,15 @@
 .card{
     background-color: #cfa67c;
-    width: 250px;
+    width: 270px;
     height: 260px;
     padding-top: 10px;
     border-radius: 10px;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .card img {
-    width: 210px;
+    width: 240px;
     height: 180px;
     border-radius: 12px;
 }
