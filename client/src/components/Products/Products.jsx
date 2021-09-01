@@ -7,7 +7,7 @@ const Products = () => {
 	return (
 		<>
             <div className={prodsStyle.title1}>
-                Produts List
+                Produts List Catalog
             </div>
 			<div className={prodsStyle.contenedor}>
                 <Product 
