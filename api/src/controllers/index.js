@@ -1,14 +1,5 @@
-const axios = require('axios').default;
-const Product = require('../models/Product');
-const Category = require('../models/Category');
-
-async function getProducts(){
-    return await Product.find();
-}
-
-async function getCategories(){
-    return await Category.find();
-}
+const getProducts = require('./getProducts');
+const getCategories = require('./getCategories');
 
 module.exports = {
     getProducts,
