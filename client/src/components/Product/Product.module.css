@@ -1,0 +1,10 @@
+.card{
+    background-color:darkgoldenrod;
+    width: 250px;
+    height: 220px;
+}
+
+.card img {
+    width: 210px;
+    height: 180px;
+}

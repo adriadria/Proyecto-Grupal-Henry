@@ -1,0 +1,25 @@
+body {
+    height: auto;
+    min-height: 100vh;
+    color: var(--color-text);
+}
+
+.title1 {
+    background-color:burlywood;
+    text-transform: uppercase;
+}
+
+.contenedor {
+    display: grid;
+    gap: 10px;
+    background-color: aqua;
+    grid-auto-rows: 220px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) ;
+    justify-content: center;
+    align-content: start;
+}
+
+:root {
+    --color-text: #ffffff;
+    --color-text1: black;
+}
