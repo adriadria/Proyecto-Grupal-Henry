@@ -2,9 +2,10 @@ import axios from "axios";
 import types from "../constants/types";
 const BASE_URL = "http://localhost:3001";
 
-// http://localhost:3001/categories GET
-// http://localhost:3001/categories?name=... GET
 // http://localhost:3001/products GET
+// http://localhost:3001/products?name=... GET
+// http://localhost:3001/products/id GET
+// http://localhost:3001/categories GET
 
 // Products
 export const getProducts = () => {
@@ -17,6 +18,10 @@ export const getProducts = () => {
       });
     } catch (err) {
       console.log(err);
+      return dispatch({
+          type: GET_BY_NAME,
+          payload: []
+        });
     }
   };
 };
@@ -25,9 +30,24 @@ export const getProductsByName = (name) => {
   // buscador --> desk? escritorio?
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`${BASE_URL}/categories?name=${name}`);
+      const { data } = await axios.get(`${BASE_URL}/products?name=${name}`);
       return dispatch({
         type: types.GET_PRODUCTS_BY_NAME,
+        payload: data,
+      });
+    } catch (err) {
+      console.log(err);;
+    }
+  };
+};
+
+export const getProductsById = (id) => {
+  // click product --> id
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/products/${id}`);
+      return dispatch({
+        type: types.GET_PRODUCTS_BY_ID,
         payload: data,
       });
     } catch (err) {
@@ -40,7 +60,7 @@ export const getProductsByName = (name) => {
 export const getCategories = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`http://localhost:3001/categories`);
+      const { data } = await axios.get(`${BASE_URL}/categories`);
       return dispatch({
         type: types.GET_CATEGORIES,
         payload: data,
