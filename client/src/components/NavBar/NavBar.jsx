@@ -16,6 +16,7 @@ const NavBar = () => {
                 <NavLink className={styles.link_text} to="/About">About</NavLink>
                 <NavLink className={styles.link_text} to="/Shop">Shop</NavLink>
                 <NavLink className={styles.link_text} to="/Help">Help</NavLink>
+                <NavLink className={styles.link_text} to="/Help">Login</NavLink>
                 </div>
                 <NavLink className={styles.link_cart} to="/Cart"><button>🛒 Your Cart</button></NavLink>
             </div>
