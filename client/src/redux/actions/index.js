@@ -19,7 +19,7 @@ export const getProducts = () => {
     } catch (err) {
       console.log(err);
       return dispatch({
-          type: GET_BY_NAME,
+          type: types.GET_PRODUCTS,
           payload: []
         });
     }
