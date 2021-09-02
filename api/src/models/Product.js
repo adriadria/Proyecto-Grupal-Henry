@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {Schema} = mongoose;
 
 const Product = new Schema({
     image_url: {type:String, required:true},
@@ -8,6 +9,4 @@ const Product = new Schema({
     categories: [{type: Schema.Types.ObjectId, ref: 'categories'}]
 });
 
-const Product = mongoose.model('product', productSchema);
-
-module.exports = Product;
+module.exports = mongoose.model('products', Product);
