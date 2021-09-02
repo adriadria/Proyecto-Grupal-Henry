@@ -10,8 +10,12 @@ router.get('/', async (req, res) => {
         if(!name){
             return res.status(200).send(products);
         }else{
-            const productsByName = products.filter( product => product.name.includes(name));
-            return res.status(200).send(productsByName);
+            const productsByName = products.filter( product => product.name.toLowerCase().includes(name.toLowerCase()));
+            if(productsByName.length === 0){
+                return res.status(404).send("No results");
+            }else{
+                return res.status(200).send(productsByName);
+            }
         }
     }catch(e){
         console.error(e);
