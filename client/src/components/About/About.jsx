@@ -1,9 +1,10 @@
 import React from 'react'
-// algo
+
+
 const About = () => {
     return (
         <div>
-            
+            Soy el componente About
         </div>
     )
 }

@@ -11,10 +11,11 @@ body {
     text-transform: uppercase;
     font-family: 'Teko', sans-serif;
     font-size: 2rem;
+    color: #eee4d0;
 }
 
 .contenedor {
-    margin-top: 10px;
+    margin: 10px 20px;
     height: auto;
     display: grid;
     gap: 10px;
