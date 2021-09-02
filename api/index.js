@@ -27,8 +27,8 @@ mongoose.connect('mongodb://localhost/requests')
 })
 .catch(err => {
     console.log(err);
+});
 
 server.listen(PORT, () => {
   console.log('listening at ', PORT); // eslint-disable-line no-console
 });
-
