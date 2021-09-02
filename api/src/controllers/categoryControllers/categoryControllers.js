@@ -69,7 +69,7 @@ async function updateCategory(req, res, next) {
     }
 }
 
-module.exports = {
+module.exports = { 
     getCategories,
     getCategory,
     createCategory,
