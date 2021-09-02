@@ -1,5 +1,9 @@
+// Products
 const GET_PRODUCTS = "GET_PRODUCTS";
 const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME";
+const GET_PRODUCTS_BY_ID = "GET_PRODUCTS_BY_ID";
+
+// Categories
 const GET_CATEGORIES = "GET_CATEGORIES";
 
 // Cart
