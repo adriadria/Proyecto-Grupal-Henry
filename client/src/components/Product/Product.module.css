@@ -1,13 +1,22 @@
 .card{
     background-color: #cfa67c;
-    width: 270px;
+    width: 260px;
     height: 260px;
     padding-top: 10px;
     border-radius: 10px;
 
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: 0.3s;
 }
 
+.card:hover{
+    transform: scale(1.05);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
 .card img {
     width: 240px;
     height: 180px;
