@@ -1,0 +1,20 @@
+.content{
+    background-color: blueviolet;
+    display: grid;
+    grid-template-columns: 500px 400px;
+    justify-content: center;
+}
+
+.info1{
+    border: 1 solid black;
+    background-color:chocolate  ;
+}
+
+.info1 img{
+    width: 450px;
+}
+
+.info2{
+    border: 1 solid black;
+    background-color:chartreuse;
+}
