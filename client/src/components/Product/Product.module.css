@@ -1,7 +1,7 @@
 .card{
     background-color: #cfa67c;
     width: 260px;
-    height: 260px;
+    height: 290px;
     padding-top: 10px;
     border-radius: 10px;
 
@@ -28,6 +28,16 @@ a{
     justify-content: space-between;
     padding: 0px 20px;
 }
+
+.cardText{
+    border: 1 solid black;
+    width: 150px;
+    height: 80px;
+    display: flex;
+    text-transform: uppercase;
+    justify-content: flex-start;
+}
+
 
 .cardData2{
     display: flex;

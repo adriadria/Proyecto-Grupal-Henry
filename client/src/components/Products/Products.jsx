@@ -32,7 +32,7 @@ const Products = () => {
                         />
                     ))
                 }
-
+                {/* 
                 <Product 
                     id={1} 
                     image={'https://medias.maisonsdumonde.com/image/upload/q_auto,f_auto/w_2000/img/escritorio-de-metal-blanco-y-abeto-con-1-cajon-y-1-puerta-1000-4-2-192784_1.jpg'}
@@ -58,6 +58,7 @@ const Products = () => {
                     image={'https://medias.maisonsdumonde.com/image/upload/q_auto,f_auto/w_2000/img/escritorio-vintage-2-cajones-1000-2-15-138841_1.jpg'}
                     name={'FJORD'}
                     />
+                 */}
             </div>
 		</>
 	);
