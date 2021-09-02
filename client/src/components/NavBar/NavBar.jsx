@@ -7,18 +7,19 @@ import Logo from "../../media/LogoEstiloPropio.png"
 
 const NavBar = () => {
     return (
-        <nav className={styles.container}>
-            <img src={Logo} alt="logo" />
+        <nav>
+            <div className={styles.container}><img src={Logo} alt="logo" />
             <SearchBar/>
             <div className={styles.container_links}>
                 <div className={styles.links}>
-                <NavLink className={styles.link_text} to="/Home">Home</NavLink>
-                <NavLink className={styles.link_text} to="/About">About</NavLink>
-                <NavLink className={styles.link_text} to="/Shop">Shop</NavLink>
-                <NavLink className={styles.link_text} to="/Help">Help</NavLink>
-                <NavLink className={styles.link_text} to="/Help">Login</NavLink>
+                <NavLink className={styles.link_text} to="/Home">Inicio</NavLink>
+                <NavLink className={styles.link_text} to="/About">Acerca de Nosotros</NavLink>
+                <NavLink className={styles.link_text} to="/Shop">Tienda</NavLink>
+                <NavLink className={styles.link_text} to="/Help">Ayuda</NavLink>
+                <NavLink className={styles.link_text} to="/Help">Logueo</NavLink>
                 </div>
-                <NavLink className={styles.link_cart} to="/Cart"><button>🛒 Your Cart</button></NavLink>
+                <NavLink className={styles.link_cart} to="/Cart"><button>🛒 Tu Carrito</button></NavLink>
+            </div>
             </div>
         </nav>
     )
