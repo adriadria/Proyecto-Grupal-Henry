@@ -28,7 +28,8 @@ const Products = () => {
                             key={e._id}
                             id={e._id}
                             image={e.image_url}
-                            name={e.name}R
+                            name={e.name}
+                            price={e.price}
                         />
                     ))
                 }
