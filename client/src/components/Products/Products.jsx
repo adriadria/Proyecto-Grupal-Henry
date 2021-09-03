@@ -7,9 +7,11 @@ import Footer from '../Footer/Footer'
 
 
 const Products = () => {
-    var productsArr = useSelector(state => state.products);
+    var productsArr = useSelector(state => state.products.all);
+    var searchArr = useSelector(state => state.products.searchResults);
+    if(searchArr.length !== 0) productsArr = searchArr
     const dispatch = useDispatch();
-    //console.log(productsArr);
+    //console.log(searchArr.length);
 
     useEffect(() => {
 		dispatch(getProducts()); 
@@ -19,7 +21,7 @@ const Products = () => {
 	return (
 		<>
             <div className={prodsStyle.title1}>
-                Produts List Catalog
+                Products List Catalog
             </div>
 			<div className={prodsStyle.contenedor}>
                 {
