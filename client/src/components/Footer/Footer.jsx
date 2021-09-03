@@ -10,26 +10,26 @@ const Footer = () => {
         <div className={styles.links}>
         <div className={styles.list}>
           <ul>Menu</ul>
-            <li>Inicio</li>
-            <li>Sobre de Nosotros</li>
-            <li>Tienda</li>
-            <li>Ayuda</li>
-            <li>Logueo</li>
+            <a href="/"><li>Inicio</li></a>
+            <a href=""><li>Sobre de Nosotros</li></a>
+            <a href=""></a><li>Tienda</li>
+            <a href=""></a><li>Ayuda</li>
+            <a href=""></a><li>Logueo</li>
         </div>
         <div className={styles.list}>
           <ul>Empresa</ul>
-            <li>La Empresa</li>
+            <a href=""></a><li>La Empresa</li>
         </div>
         <div className={styles.list}>
           <ul>Conocenos</ul>
-            <li>El Equipo</li>
-            <li>Nuestra Historia</li>
+            <a href=""></a><li>El Equipo</li>
+            <a href=""></a><li>Nuestra Historia</li>
         </div>
         <div className={styles.list}>
           <ul>Encuentranos</ul>
-            <li>Facebook</li>
-            <li>Twitter</li>
-            <li>Instagram</li>
+            <a href="Facebook"><li>Facebook</li></a>
+            <a href="Twitter"><li>Twitter</li></a>
+            <a href="Instagram"><li>Instagram</li></a>
         </div>
         </div>
       </div>

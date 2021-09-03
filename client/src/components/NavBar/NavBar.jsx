@@ -62,7 +62,7 @@ const NavBar = () => {
               Logueo
             </NavLink>
           </div>
-          <NavLink className={styles.link_cart} to="/Cart">
+          <NavLink className={styles.link_cart} to="https://www.mercadolibre.com.ar/c/construccion#menu=categories">
             <button>🛒 Tu Carrito</button>
           </NavLink>
         </div>
