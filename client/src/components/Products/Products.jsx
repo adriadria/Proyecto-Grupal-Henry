@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../redux/actions';
 import Product from '../Product/Product';
 import prodsStyle from './Products.module.css';
-
+import Footer from '../Footer/Footer'
 
 
 const Products = () => {
     var productsArr = useSelector(state => state.products);
     const dispatch = useDispatch();
-    console.log(productsArr);
+    //console.log(productsArr);
 
     useEffect(() => {
 		dispatch(getProducts()); 
@@ -61,6 +61,7 @@ const Products = () => {
                     />
                  */}
             </div>
+                <Footer/>
 		</>
 	);
 };
