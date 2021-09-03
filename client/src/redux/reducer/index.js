@@ -58,11 +58,12 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case types.FILTER_BY_CATEGORY:
+      const allProducts = state.products.all;
       return {
         ...state,
         products: {
           ...state.products,
-          filtered: utils.filterByCategory(state, action.payload),
+          filtered: utils.filterByCategory(allProducts, action.payload),
         },
       };
 
