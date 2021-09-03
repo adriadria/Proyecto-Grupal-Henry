@@ -1,8 +1,8 @@
 const { Router } = require('express');
 
 const productRouter = require('./product.js');
-const categoryRouter = require('./cstegory.js');
-const userRouter = require('./userRouter');
+const categoryRouter = require('./category.js');
+const userRouter = require('./userRoutes');
 
 const router = Router();
 
