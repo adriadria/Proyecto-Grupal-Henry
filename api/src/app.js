@@ -1,9 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
+const dotenv = require('dotenv');
 const server = express();
 const routes = require('./routes/index');
 
-
+dotenv.config();
 // dropea la collection igual q el {force: true}, pero aun no se donde iria XD.
 // mongoose.connection.db.dropCollection('products', function(err, results) {
 //     if(err) console.log(err);
