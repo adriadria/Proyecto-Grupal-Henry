@@ -1,5 +1,7 @@
 const Category = require('../models/Category');
 
+// Todas las rutas tienen funcionalidad 
+
 async function getCategories(_req, res, next) {
     try {
         const categories = await Category.find();
@@ -16,35 +18,18 @@ async function getCategory(req, res, next) {
         if (category) {
             return res.json(category);
         }
-        return await res.send('the category does not exist');
+        return await res.send('La categoría no existe');
     } catch (error) {
         next(error);
     }
 }
 
 async function createCategory(req, res, next) {
-    const { name } = req.body;
+    const { image_url, name } = req.body;
     try {
-        const category = await Category.findOne({ where: { name } });
-        if (category) {
-            return res.send('the category already exists');
-        }
-        await Category.create({
-            name
-        });
-        return res.send('category create');
-    } catch (error) {
-        next(error);
-    }
-}
-
-async function deleteCategory(req, res, next) {
-    const { id } = req.params;
-    try {
-        const category = await Category.destroy({ where: { id } });
-        if (category) {
-            return res.send('category delete');
-        }
+        const category = new Category({ image_url, name });
+        await category.save();
+        return res.status(200).send(`La categoría ${name} ha sido creada`);
     } catch (error) {
         next(error);
     }
@@ -52,24 +37,37 @@ async function deleteCategory(req, res, next) {
 
 async function updateCategory(req, res, next) {
     const { id } = req.params;
-    const { name } = req.body;
+    const { image_url, name } = req.body;
     try {
-        const category = await Category.findOne({ where: { id } });
-        if (category) {
-            await category.update({
-                name,
-                image,
-            });
+        const category = await Category.findById(id);
+        if (!category) {
+            return res.status(404).send('La categoría no existe')
         } else {
-            return res.send('category not found');
+            await Category.updateOne({ _id: id }, { image_url, name })
+            return res.status(200).send('Categoría actualizada');
         }
-        return res.send('category update');
     } catch (error) {
         next(error);
+        return res.send(`Categoría no encontrada`);
     }
 }
 
-module.exports = { 
+async function deleteCategory(req, res, next) {
+    const { id } = req.params;
+    try {
+        const category = await Category.findById(id);
+        if(!category){
+            await Category.deleteOne({_id: id});
+            return res.status(200).send('Categoría eliminada');
+        }else{
+            return res.status(404).send('Categoría no encontrada');
+        }
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports = {
     getCategories,
     getCategory,
     createCategory,
