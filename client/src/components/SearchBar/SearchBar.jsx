@@ -1,12 +1,11 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux';
-//import {getNameProduct} from '../actions';
+import {getProductsByName} from '../../redux/actions';
 import styles from './SearchBar.module.css';
-//import axios from "axios";
 
 
 const SearchBar = () => {
-//    const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const [name, setName] = useState("")
 
     function handleInputChange(e){
@@ -15,18 +14,18 @@ const SearchBar = () => {
         console.log(name)
     }
 
-    // function handleSubmit(e){
-    //     e.preventDefault();
-    //     if(name !== ""){
-    //     dispatch(getNameProduct(name));
-    //     setName("");}
-    //     else{
-    //     alert("Ingresa un nombre para buscar")
-    //     }
-    // }
+    function handleSubmit(e){
+        e.preventDefault();
+        if(name !== ""){
+        dispatch(getProductsByName(name));
+        setName("");}
+        else{
+        alert("Ingresa un nombre para buscar")
+        }
+    }
     return (
         <div>
-             <form > {/* onSubmit={handleSubmit} */}
+             <form onSubmit={handleSubmit} > 
             <div className={styles.searchBar}><input
             className={styles.input} 
             type="text"
@@ -34,7 +33,7 @@ const SearchBar = () => {
             onChange= {handleInputChange}
             value={name}
             />
-            <button  className={styles.boton} type='submit' >Buscar Producto</button> {/* onClick={handleSubmit}*/}
+            <button  className={styles.boton} type='submit' onClick={handleSubmit}>Buscar Producto</button> 
             </div></form>
         </div>
     )
