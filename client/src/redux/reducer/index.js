@@ -57,6 +57,15 @@ const rootReducer = (state = initialState, action) => {
         products: utils.orderPrice(state, action.payload),
       };
 
+    case types.FILTER_BY_CATEGORY:
+      return {
+        ...state,
+        products: {
+          ...state.products,
+          filtered: utils.filterByCategory(state, action.payload),
+        },
+      };
+
     default:
       return state;
   }
