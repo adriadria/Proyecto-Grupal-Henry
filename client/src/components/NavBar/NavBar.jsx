@@ -49,20 +49,20 @@ const NavBar = () => {
             <NavLink className={styles.link_text} to="/">
               Inicio
             </NavLink>
-            <NavLink className={styles.link_text} to="/About">
+            <NavLink className={styles.link_text} to="/about">
               Sobre de Nosotros
             </NavLink>
-            <NavLink className={styles.link_text} to="/Shop">
+            <NavLink className={styles.link_text} to="/shop">
               Tienda
             </NavLink>
-            <NavLink className={styles.link_text} to="/Help">
+            <NavLink className={styles.link_text} to="/help">
               Ayuda
             </NavLink>
-            <NavLink className={styles.link_text} to="/Login">
+            <NavLink className={styles.link_text} to="/login">
               Logueo
             </NavLink>
           </div>
-          <NavLink className={styles.link_cart} to="https://www.mercadolibre.com.ar/c/construccion#menu=categories">
+          <NavLink className={styles.link_cart} to="/cart">
             <button>🛒 Tu Carrito</button>
           </NavLink>
         </div>
