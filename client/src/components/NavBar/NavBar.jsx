@@ -12,11 +12,11 @@ const NavBar = () => {
             <SearchBar/>
             <div className={styles.container_links}>
                 <div className={styles.links}>
-                <NavLink className={styles.link_text} to="/Home">Inicio</NavLink>
+                <NavLink className={styles.link_text} to="/">Inicio</NavLink>
                 <NavLink className={styles.link_text} to="/About">Acerca de Nosotros</NavLink>
                 <NavLink className={styles.link_text} to="/Shop">Tienda</NavLink>
                 <NavLink className={styles.link_text} to="/Help">Ayuda</NavLink>
-                <NavLink className={styles.link_text} to="/Help">Logueo</NavLink>
+                <NavLink className={styles.link_text} to="/Login">Logueo</NavLink>
                 </div>
                 <NavLink className={styles.link_cart} to="/Cart"><button>🛒 Tu Carrito</button></NavLink>
             </div>
