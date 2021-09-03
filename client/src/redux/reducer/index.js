@@ -2,9 +2,14 @@ import types from "../constants/types";
 import utils from "../utils/index";
 
 const initialState = {
-  products: [], // todos los products cargados de getProducts
-  categories: [],
+  products: {
+    all: [], // todos los products cargados de getProducts
+    filtered: [],
+    searchResults: [],
+  },
+  createdProduct: [],
   productDetails: [],
+  categories: [],
   loading: false,
 };
 
@@ -13,19 +18,31 @@ const rootReducer = (state = initialState, action) => {
     case types.GET_PRODUCTS:
       return {
         ...state,
-        products: action.payload,
+        products: {
+          ...state.products,
+          all: action.payload,
+        },
       };
 
     case types.GET_PRODUCTS_BY_NAME:
       return {
         ...state,
-        products: action.payload,
+        products: {
+          ...state.products,
+          searchResults: action.payload,
+        },
       };
 
     case types.GET_PRODUCTS_BY_ID:
       return {
         ...state,
         productDetails: action.payload,
+      };
+
+    case types.POST_PRODUCT:
+      return {
+        ...state,
+        createdProduct: action.payload,
       };
 
     case types.GET_CATEGORIES:
