@@ -1,9 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router';
 import NavBar from '../NavBar/NavBar';
-//import Product from '../Product/Product'
 import detStyle from './Detail.module.css';
 
 export default function Detail() {
+    const dispatch = useDispatch();
+    const location = useLocation();
+    var productDetail = useSelector((state) => state.productDetails);
+    var productId = location.pathname.split('/').pop();
+
 	return (
 		<div>
 			<NavBar />
