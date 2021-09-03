@@ -66,6 +66,15 @@ const rootReducer = (state = initialState, action) => {
         },
       };
 
+    case types.FILTER_BY_PRICE_RANGE:
+      return {
+        ...state,
+        products: {
+          ...state.products,
+          filtered: utils.filterByPriceRange(state, action.payload),
+        },
+      };
+
     default:
       return state;
   }
