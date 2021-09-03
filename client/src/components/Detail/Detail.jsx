@@ -1,14 +1,21 @@
 import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
+import { getProductsById } from '../../redux/actions';
 import NavBar from '../NavBar/NavBar';
 import detStyle from './Detail.module.css';
+
 
 export default function Detail() {
     const dispatch = useDispatch();
     const location = useLocation();
     var productDetail = useSelector((state) => state.productDetails);
     var productId = location.pathname.split('/').pop();
+
+    useEffect(() => {
+		dispatch(getProductsById(productId));
+	}, [dispatch]);
 
 	return (
 		<div>
