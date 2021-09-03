@@ -1,46 +1,91 @@
-.card{
-    background-color: #cfa67c;
-    width: 260px;
-    height: 290px;
-    padding-top: 10px;
-    border-radius: 10px;
 
-    transition: 0.3s;
+
+a {
+	text-decoration: none;
+	color: black;
 }
 
-.card:hover{
-    transform: scale(1.05);
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+.cardData1 {
+	display: flex;
+	justify-content: space-between;
+
+	width: 100%;
 }
 
-a{
-    text-decoration: none;
-    color: black;
+.cardText {
+	border: 1 solid black;
+	width: 150px;
+	height: 80px;
+	display: flex;
+	text-transform: uppercase;
+	justify-content: flex-start;
 }
+
+/* 
+.card {
+	background-color: #cfa67c;
+	width: 260px;
+	height: 290px;
+	padding-top: 0px;
+	border-radius: 0px;
+
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	transition: 0.3s;
+}
+
+.card:hover {
+	transform: scale(1.05);
+	box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
 .card img {
-    width: 240px;
-    height: 180px;
-    border-radius: 12px;
+	width: 260px;
+	height: 190px;
+	border-radius: 0px;
 }
 
-.cardData1{
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 20px;
+.cardData2 {
+	display: flex;
+	justify-content: flex-start;
+	padding-left: 20px;
+}
+ */
+
+/* estilo de cards */
+
+.card1 {
+	margin: 10px;
+	background-color: #eee4d0b0;
+	border-radius: 10px;
+	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+	width: 260px;
+}
+.card1:hover {
+	transform: scale(1.05);
+	box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+.cardheader img {
+	margin-top: 10px;
+	width: 80%;
+	height: 200px;
+}
+.cardbody {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 20px;
+	min-height: 120px;
 }
 
-.cardText{
-    border: 1 solid black;
-    width: 150px;
-    height: 80px;
-    display: flex;
-    text-transform: uppercase;
-    justify-content: flex-start;
-}
-
-
-.cardData2{
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 20px;
+.tag {
+	background: #45209b;
+	border-radius: 50px;
+	font-size: 12px;
+	margin: 0;
+	color: #fff;
+	padding: 2px 10px;
+	text-transform: uppercase;
+	cursor: pointer;
 }

@@ -1,8 +1,9 @@
-const {Router} = require('express');
-const { createUser } = require('../controllers/videogame.controller');
+const { Router } = require('express');
+const { signUp, signIn } = require('../controllers/userControllers');
 
 const router = Router();
 
-router.post('/user/add', createUser);
+router.post('/signup', signUp);
+router.post('/signin', signIn);
 
 module.exports = router;

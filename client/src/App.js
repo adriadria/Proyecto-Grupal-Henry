@@ -8,6 +8,10 @@ import Detail   from './components/Detail/Detail';
 import Error404 from './components/Error404/Error404';
 
 import './App.css';
+import Login from './components/Login/Login';
+import Company from './components/Company/Company';
+import Team from './components/Team/Team';
+import Our from './components/Our/Our';
 
 function App() {
 	return (
@@ -20,6 +24,10 @@ function App() {
     <Route exact path='/cart'       component = {Cart}/>
     <Route exact path='/about'      component = {About}/>
     <Route exact path= '/help'      component = {Help}/>
+    <Route exact path= '/login'      component = {Login}/>
+    <Route exact path= '/company'      component = {Company}/>
+    <Route exact path= '/team'      component = {Team}/>
+    <Route exact path= '/our'      component = {Our}/>
     <Route path= '*'                component = {Error404}/>
     </Switch>
       
