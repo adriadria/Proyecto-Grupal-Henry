@@ -2,13 +2,15 @@ const Product = require('../models/Product');
 const Category = require('../models/Category');
 
 async function getProducts(req, res, next) {
+    const {name} = req.query;
     try {
-        const products = await Product.findAll({
-            include: {
-                model: Category,
-            },
-        });
-        return res.json(products);
+        const products = await Product.find();
+        if(!name){
+            return res.json(products);
+        }else{
+            const productsByName = products.filter( product => product.name.toLowerCase().includes(name.toLowerCase()));
+            return res.json(productsByName);
+        }
     } catch (error) {
         next(error);
     }
@@ -18,12 +20,7 @@ async function getProductById(req, res, next) {
   const { id } = req.params;
   try {
     if (id) {
-      const detail = await Product.findOne({
-        where: { id },
-        include: {
-          model: Category,
-        },
-      });
+      const detail = await Product.findById(id);
       return res.json(detail);
     }
   } catch (error) {
