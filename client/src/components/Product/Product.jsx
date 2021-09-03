@@ -23,7 +23,7 @@ const Product = ({ id, image, name, price }) => {
 					<img src={image} alt={name} />
 				</div>
 				<div className={prodStyle.cardbody}>
-					<div className={prodStyle.tag}>Technology</div>
+					<div className={prodStyle.tag}>General</div>
 					<div className={prodStyle.cardData1}>
 					<span className={prodStyle.cardPrice}><b>Price:</b> ${price}</span>
 					<span>💎💎</span>
