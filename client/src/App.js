@@ -8,6 +8,7 @@ import Detail   from './components/Detail/Detail';
 import Error404 from './components/Error404/Error404';
 
 import './App.css';
+import Login from './components/Login/Login';
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
     <Route exact path='/cart'       component = {Cart}/>
     <Route exact path='/about'      component = {About}/>
     <Route exact path= '/help'      component = {Help}/>
+    <Route exact path= '/help'      component = {Login}/>
     <Route path= '*'                component = {Error404}/>
     </Switch>
       
