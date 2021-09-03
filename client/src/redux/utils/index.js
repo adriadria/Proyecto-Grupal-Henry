@@ -16,8 +16,7 @@ const filterByPriceRange = (state, { min, max }) => {
   return allProducts.filter(({ price }) => price >= min && price <= max);
 };
 
-const filterByCategory = (state, option) => {
-  const allProducts = state.products.all;
+const filterByCategory = (allProducts, option) => {
   return option === "all_categories"
     ? allProducts
     : allProducts.filter(({ categories }) => categories.includes(option));
