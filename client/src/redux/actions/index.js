@@ -19,9 +19,9 @@ export const getProducts = () => {
     } catch (err) {
       console.log(err);
       return dispatch({
-          type: types.GET_PRODUCTS,
-          payload: []
-        });
+        type: types.GET_PRODUCTS,
+        payload: [],
+      });
     }
   };
 };
@@ -36,7 +36,7 @@ export const getProductsByName = (name) => {
         payload: data,
       });
     } catch (err) {
-      console.log(err);;
+      console.log(err);
     }
   };
 };
@@ -68,5 +68,21 @@ export const getCategories = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+};
+
+// Filter
+export const filterByCategory = (payload) => {
+  return {
+    type: types.FILTER_BY_CATEGORY,
+    payload,
+  };
+};
+
+// Order
+export const orderByPrice = (payload) => {
+  return {
+    type: types.ORDER_BY_PRICE,
+    payload,
   };
 };
