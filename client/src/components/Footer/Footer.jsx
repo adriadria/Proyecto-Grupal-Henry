@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../../media/LogoEstiloPropio.png"
 import styles from "./Footer.module.css";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -10,26 +11,26 @@ const Footer = () => {
         <div className={styles.links}>
         <div className={styles.list}>
           <ul>Menu</ul>
-            <a href="/"><li>Inicio</li></a>
-            <a href=""><li>Sobre de Nosotros</li></a>
-            <a href=""></a><li>Tienda</li>
-            <a href=""></a><li>Ayuda</li>
-            <a href=""></a><li>Logueo</li>
+            <NavLink to="/"><li>Inicio</li></NavLink>
+            <NavLink to="/about"><li>Sobre de Nosotros</li></NavLink>
+            <NavLink to="/shop"><li>Tienda</li></NavLink>
+            <NavLink to="/help"><li>Ayuda</li></NavLink>
+            <NavLink to="/login"><li>Logueo</li></NavLink>
         </div>
         <div className={styles.list}>
           <ul>Empresa</ul>
-            <a href=""></a><li>La Empresa</li>
+            <NavLink to="/company"><li>La Empresa</li></NavLink>
         </div>
         <div className={styles.list}>
           <ul>Conocenos</ul>
-            <a href=""></a><li>El Equipo</li>
-            <a href=""></a><li>Nuestra Historia</li>
+            <NavLink to="/team"><li>El Equipo</li></NavLink>
+            <NavLink to="/our"><li>Nuestra Historia</li></NavLink>
         </div>
         <div className={styles.list}>
           <ul>Encuentranos</ul>
-            <a href="Facebook"><li>Facebook</li></a>
-            <a href="Twitter"><li>Twitter</li></a>
-            <a href="Instagram"><li>Instagram</li></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer"><li>Facebook</li></a>
+            <a href="https://twitter.com/" target="_blank" rel="noreferrer"><li>Twitter</li></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer"><li>Instagram</li></a>
         </div>
         </div>
       </div>
