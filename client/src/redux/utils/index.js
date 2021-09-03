@@ -12,13 +12,15 @@ const orderPrice = (arr, option) => {
 };
 
 const filterByPriceRange = (state, { min, max }) => {
-  const copyState = state.products.all;
-  return copyState.filter(({ price }) => price >= min && price <= max);
+  const allProducts = state.products.all;
+  return allProducts.filter(({ price }) => price >= min && price <= max);
 };
 
 const filterByCategory = (state, option) => {
-  const copyState = state.products.all;
-  return copyState.filter(({ categories }) => categories.includes(option));
+  const allProducts = state.products.all;
+  return option === "all_categories"
+    ? allProducts
+    : allProducts.filter(({ categories }) => categories.includes(option));
 };
 
 export default {
