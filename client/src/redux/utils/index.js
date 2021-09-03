@@ -1,23 +1,16 @@
-export const orderByParam = (order, array) => {
-  const products = [...array];
-  switch (order) {
-    case 'price_asc':
-      return recipes.sort((a, b) => {
-        if (a.price > b.price) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
-    case 'price_desc':
-      return products.sort((a, b) => {
-        if (a.price < b.price) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
+const orderPrice = (arr, option) => {
+  switch (option) {
+    case "price_asc":
+      return arr.sort((a, b) => a.price - b.price);
+
+    case "price_desc":
+      return arr.sort((a, b) => b.price - a.price);
+
     default:
-      return recipes;
-  };
+      return arr;
+  }
+};
+
+export default {
+  orderPrice,
 };

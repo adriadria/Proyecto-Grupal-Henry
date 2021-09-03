@@ -29,42 +29,46 @@ async function getProductById(req, res, next) {
 }
 
 async function createProducts(req, res, next) {
+    const {name, price, description, image_url, categories} = req.body;
     try {
-        if (!req.body.length) {
-            return res.send('Add product');
-        } else {
-            const products = req.body;
-            console.log(products)
-            products.forEach(
-                async ({
-                    image_url,
-                    name,
-                    description,
-                    price,
-                    categories }) => {
-                    const [product] = await Product.findOrCreate({
-                        where: {
-                            name,
-                        },
-                        defaults: { image_url, description, price },
-                    });
-                    categories.forEach(async ({ name }) => {
-                        const [category] = await Category.findOrCreate({
-                            where: { name },
-                        });
-                        product.addCategory(category);
-                    });
-                }
-            );
-            if (products.length > 1) {
-                const productsNames = products.map((elem) => elem.name);
-                return res.json(`Los productos ${productsNames} han sido creados exitosamente.`);
-            }
-            if (products.length === 1) {
-                const productName = products.map((elem) => elem.name);
-                return res.json(`El producto ${productName} ha sido creado exitosamente.`);
-            }
-        }
+        const product = new Product({name, price, description, image_url, categories});
+        await product.save();
+        return res.status(200).send('Product successfully created');
+        // if (!req.body.length) {
+        //     return res.send('Add product');
+        // } else {
+        //     const products = req.body;
+        //     console.log("Products: ", products)
+        //     products.forEach(
+        //         async ({
+        //             image_url,
+        //             name,
+        //             description,
+        //             price,
+        //             categories }) => {
+        //             const [product] = await Product.findOrCreate({
+        //                 where: {
+        //                     name,
+        //                 },
+        //                 defaults: { image_url, description, price },
+        //             });
+        //             categories.forEach(async ({ name }) => {
+        //                 const [category] = await Category.findOrCreate({
+        //                     where: { name },
+        //                 });
+        //                 product.addCategory(category);
+        //             });
+        //         }
+        //     );
+        //     if (products.length > 1) {
+        //         const productsNames = products.map((elem) => elem.name);
+        //         return res.json(`Los productos ${productsNames} han sido creados exitosamente.`);
+        //     }
+        //     if (products.length === 1) {
+        //         const productName = products.map((elem) => elem.name);
+        //         return res.json(`El producto ${productName} ha sido creado exitosamente.`);
+        //     }
+        // }
     } catch (error) {
         next(error);
         return res.send('Product is not create ERROR');
