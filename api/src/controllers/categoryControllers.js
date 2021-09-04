@@ -14,7 +14,7 @@ async function getCategories(_req, res, next) {
 async function getCategory(req, res, next) {
     const { id } = req.params;
     try {
-        const category = await Category.findOne({ where: { id } });
+        const category = await Category.findById(id);
         if (category) {
             return res.json(category);
         }
