@@ -22,7 +22,7 @@ const NavBar = () => {
     e.preventDefault();
     dispatch(getProducts());
   }
-
+  let rangos=["0-500","501-1000","1001-1500","1501-2000","2001-2500"];
   //   function handleFilterCategories(e) {
   //     dispatch(filterProductsByCategories(e.target.value));
   //   }
@@ -40,6 +40,17 @@ const NavBar = () => {
             {categories.map((cat) => (
               <option value={cat.id} key={cat.id}>
                 {cat.name}
+              </option>
+            ))}
+          </select>
+          <select
+            className={styles.select}
+            //onChange={(e) => handleFilterCategories(e)}
+          >
+              <option value="rango">Precios</option>
+            {rangos.map((rango) => (
+              <option >
+                {rango}
               </option>
             ))}
           </select>
