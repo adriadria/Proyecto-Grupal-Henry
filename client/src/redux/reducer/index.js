@@ -10,8 +10,9 @@ const initialState = {
   createdProduct: [],
   productDetails: [],
   categories: [],
+  categoryDetails: [],
   loading: false,
-  dataState: 'all',
+  dataState: "all",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -19,7 +20,7 @@ const rootReducer = (state = initialState, action) => {
     case types.GET_PRODUCTS:
       return {
         ...state,
-        dataState: 'all',
+        dataState: "all",
         products: {
           ...state.products,
           all: action.payload,
@@ -29,7 +30,7 @@ const rootReducer = (state = initialState, action) => {
     case types.GET_PRODUCTS_BY_NAME:
       return {
         ...state,
-        dataState: 'search',
+        dataState: "search",
         products: {
           ...state.products,
           searchResults: action.payload,
@@ -52,6 +53,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         categories: action.payload,
+      };
+
+    case types.GET_CATEGORY_DETAILS:
+      return {
+        ...state,
+        categoryDetails: action.payload,
       };
 
     case types.ORDER_BY_PRICE:

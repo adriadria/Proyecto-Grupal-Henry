@@ -86,6 +86,20 @@ export const getCategories = () => {
   };
 };
 
+export const getCategoryDetails = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/categories/detail/${id}`)
+      return dispatch({
+        type: types.GET_CATEGORY_DETAILS,
+        payload: data,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  } 
+}
+
 // Filter
 export const filterByCategory = (payload) => {
   return {
