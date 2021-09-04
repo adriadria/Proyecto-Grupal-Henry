@@ -7,11 +7,17 @@ import Footer from '../Footer/Footer'
 
 
 const Products = () => {
+    var showData = [];
     var productsArr = useSelector(state => state.products.all);
     var searchArr = useSelector(state => state.products.searchResults);
-    if(searchArr.length !== 0) productsArr = searchArr
+    var filtered = useSelector(state => state.products.filtered);
+    var dataState = useSelector(state => state.dataState);
+    
+    if(dataState === "all") showData = productsArr;
+    else if(dataState === "search") showData = searchArr;
+    else if(dataState === "filter") showData = filtered;
     const dispatch = useDispatch();
-    //console.log(searchArr.length);
+    console.log(dataState);
 
     useEffect(() => {
 		dispatch(getProducts()); 
@@ -25,13 +31,14 @@ const Products = () => {
             </div>
 			<div className={prodsStyle.contenedor}>
                 {
-                    productsArr.map(e => (
+                    showData.map(e => (
                         <Product 
                             key={e._id}
                             id={e._id}
                             image={e.image_url}
                             name={e.name}
                             price={e.price}
+                            catArr={e.categories}
                         />
                     ))
                 }

@@ -11,6 +11,7 @@ const initialState = {
   productDetails: [],
   categories: [],
   loading: false,
+  dataState: 'all',
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -18,6 +19,7 @@ const rootReducer = (state = initialState, action) => {
     case types.GET_PRODUCTS:
       return {
         ...state,
+        dataState: 'all',
         products: {
           ...state.products,
           all: action.payload,
@@ -27,6 +29,7 @@ const rootReducer = (state = initialState, action) => {
     case types.GET_PRODUCTS_BY_NAME:
       return {
         ...state,
+        dataState: 'search',
         products: {
           ...state.products,
           searchResults: action.payload,
@@ -61,6 +64,7 @@ const rootReducer = (state = initialState, action) => {
       const allProducts = state.products.all;
       return {
         ...state,
+        dataState: utils.filterByCategoryState(action.payload),
         products: {
           ...state.products,
           filtered: utils.filterByCategory(allProducts, action.payload),

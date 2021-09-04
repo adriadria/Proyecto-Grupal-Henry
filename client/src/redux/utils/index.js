@@ -22,8 +22,15 @@ const filterByCategory = (allProducts, option) => {
     : allProducts.filter(({ categories }) => categories.includes(option));
 };
 
+const filterByCategoryState = (option) => {
+  return option === "all_categories"
+    ? "all"
+    : "filter";
+};
+
 export default {
   orderPrice,
   filterByCategory,
   filterByPriceRange,
+  filterByCategoryState,
 };
