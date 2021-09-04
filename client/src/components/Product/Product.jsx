@@ -2,7 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import prodStyle from './Product.module.css';
 
-const Product = ({ id, image, name, price }) => {
+const Product = ({ id, image, name, price, catArr }) => {
+
+	function algo (value){
+		return "abc"
+	}
 	return (
 		<Link to={`/detail/${id}`}>
 			{/* 
@@ -23,7 +27,12 @@ const Product = ({ id, image, name, price }) => {
 					<img src={image} alt={name} />
 				</div>
 				<div className={prodStyle.cardbody}>
-					<div className={prodStyle.tag}>General</div>
+			 		{
+						catArr.map(e => (
+							<div className={prodStyle.tag}>{ algo(e)}</div>
+						))
+					 }
+					{/* <div className={prodStyle.tag}>General</div> */}
 					<div className={prodStyle.cardData1}>
 					<span className={prodStyle.cardPrice}><b>Price:</b> ${price}</span>
 					<span>💎💎</span>
