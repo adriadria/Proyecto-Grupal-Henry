@@ -19,10 +19,11 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const mongoose = require('mongoose');
+const db = process.env.MONGO_URI;
 const PORT = 3001;
 
-mongoose.connect('mongodb://localhost/requests')
-.then(db => {
+mongoose.connect(db)
+.then(resp => {
     console.log('DB connected');
 })
 .catch(err => {
