@@ -36,9 +36,9 @@ const NavBar = () => {
             className={styles.select}
             //onChange={(e) => handleFilterCategories(e)}
           >
-              <option value="0">Categorias</option>
+              <option value="all_categories">Categorias Todas</option>
             {categories.map((cat) => (
-              <option value={cat.id} key={cat.id}>
+              <option value={cat._id} key={cat._id}>
                 {cat.name}
               </option>
             ))}
