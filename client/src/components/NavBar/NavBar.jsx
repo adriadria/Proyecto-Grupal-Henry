@@ -30,7 +30,7 @@ const NavBar = () => {
     <nav>
       <div className={styles.container}>
         <img src={Logo} alt="logo" />
-        <div>
+        <div className={styles.filtros}>
           <SearchBar />
           <select
             className={styles.select}
@@ -61,7 +61,7 @@ const NavBar = () => {
               Inicio
             </NavLink>
             <NavLink className={styles.link_text} to="/about">
-              Sobre de Nosotros
+              Sobre Nosotros
             </NavLink>
             <NavLink className={styles.link_text} to="/shop">
               Tienda
@@ -74,7 +74,7 @@ const NavBar = () => {
             </NavLink>
           </div>
           <NavLink className={styles.link_cart} to="/cart">
-            <button>🛒 Tu Carrito</button>
+            <button className={styles.boton}>🛒 Tu Carrito</button>
           </NavLink>
         </div>
       </div>
