@@ -93,12 +93,27 @@ export const getCategoryDetails = (id) => {
       return dispatch({
         type: types.GET_CATEGORY_DETAILS,
         payload: data,
-      })
+      });
     } catch (error) {
       console.log(error)
     }
-  } 
-}
+  };
+};
+
+// Cart
+export const addToCart = (id) => {
+  return {
+    type: types.CART_ADD_PRODUCT,
+    payload: id,
+  };
+};
+
+export const removeFromCart = (id) => {
+  return {
+    type: types.CART_REMOVE_PRODUCT,
+    payload: id,
+  };
+};
 
 // Filter
 export const filterByCategory = (payload) => {

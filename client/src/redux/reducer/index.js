@@ -11,6 +11,7 @@ const initialState = {
   productDetails: [],
   categories: [],
   categoryDetails: [],
+  cart: [],
   loading: false,
   dataState: "all",
 };
@@ -59,6 +60,18 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         categoryDetails: action.payload,
+      };
+
+    case types.CART_ADD_PRODUCT:
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      };
+
+    case types.CART_REMOVE_PRODUCT:
+      return {
+        ...state,
+        cart: state.cart.filter((elem) => elem._id !== action.payload),
       };
 
     case types.ORDER_BY_PRICE:
