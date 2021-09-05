@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { addProdct, getCategories } from '../../redux/actions/index';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { addCategory } from '../../redux/actions/index';
+import { useDispatch } from 'react-redux';
 
 function addProdcts () {
 
@@ -30,10 +30,10 @@ function addProdcts () {
 
   return (
     <div>
-      <h1>Cargar productos:</h1>
+      <h1>Cargar categoría:</h1>
       <form onSubmit={e => {handleSubmit(e)}}>
         <div>
-          <label>Nombre del producto:</label>
+          <label>Nombre de la categoría:</label>
           <input
             type='text'
             value={input.name}
