@@ -28,9 +28,12 @@ const filterByCategoryState = (option) => {
 
 const addProductToCart = (state, id) => {
   const product = state.products.all.find((elem) => elem._id === id);
-  return product
-    ? [...state.cart.listProducts, product]
-    : state.cart.listProducts;
+  if (product && state.cart.listProducts.includes(product)) {
+    return state.cart.listProducts;
+  } else {
+    product.quantity = 1;
+    return [...state.cart.listProducts, product];
+  }
 };
 
 const utils = {

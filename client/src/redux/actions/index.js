@@ -127,6 +127,13 @@ export const removeFromCart = (id) => {
   };
 };
 
+export const updateQuantity = (payload) => {
+  return {
+    type: types.UPDATE_QUANTITY,
+    payload,
+  };
+};
+
 // Filter
 export const filterByCategory = (payload) => {
   return {
