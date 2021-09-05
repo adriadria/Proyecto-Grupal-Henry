@@ -155,7 +155,7 @@ import {
       </Grid>
   
       <div className="actions">
-        <Button size="medium" to="/basket" component={Link} variant="contained">
+        <Button size="medium" to="/cart" component={Link} variant="contained">
           Go Back
         </Button>
         <Button type="submit" size="medium" color="secondary" variant="contained">
