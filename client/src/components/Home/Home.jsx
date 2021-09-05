@@ -1,17 +1,18 @@
-import React from 'react'
+import React from "react";
 // import Footer from '../Footer/Footer'
-import NavBar from '../NavBar/NavBar'
-import Products from '../Products/Products'
-
+import NavBar from "../NavBar/NavBar";
+import Products from "../Products/Products";
 
 const Home = () => {
-    return (
-        <div>
-            <NavBar/>
-            <Products />
-            {/* <Footer/>  */}
-        </div>
-    )
-}
+  // eslint-disable-next-line
+  const [order, setOrder] = React.useState("");
+  return (
+    <div>
+      <NavBar setOrder={setOrder} />
+      <Products />
+      {/* <Footer/>  */}
+    </div>
+  );
+};
 
-export default Home
+export default Home;
