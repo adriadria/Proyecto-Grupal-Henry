@@ -26,11 +26,19 @@ const filterByCategoryState = (option) => {
   return option === "all_categories" ? "all" : "filter";
 };
 
+const addProductToCart = (state, id) => {
+  const product = state.products.all.find((elem) => elem._id === id);
+  return product
+    ? [...state.cart.listProducts, product]
+    : state.cart.listProducts;
+};
+
 const utils = {
   orderPrice,
   filterByCategory,
   filterByPriceRange,
   filterByCategoryState,
+  addProductToCart,
 };
 
 export default utils;

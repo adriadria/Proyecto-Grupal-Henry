@@ -7,7 +7,6 @@ const initialState = {
     filtered: [],
     searchResults: [],
   },
-  createdProduct: [],
   productDetails: [],
   categories: [],
   categoryDetails: [],
@@ -50,7 +49,11 @@ const rootReducer = (state = initialState, action) => {
     case types.POST_PRODUCT:
       return {
         ...state,
-        createdProduct: action.payload,
+      };
+
+    case types.POST_CATEGORY:
+      return {
+        ...state,
       };
 
     case types.GET_CATEGORIES:
@@ -70,7 +73,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         cart: {
           ...state.cart,
-          listProducts: [...state.cart.listProducts, action.payload],
+          listProducts: utils.addProductToCart(state, action.payload),
         },
       };
 
