@@ -19,7 +19,7 @@ const FILTER_BY_PRICE_RANGE = "FILTER_BY_PRICE_RANGE";
 // Order
 const ORDER_BY_PRICE = "ORDER_BY_PRICE";
 
-export default {
+const TYPES = {
   GET_PRODUCTS,
   GET_PRODUCTS_BY_NAME,
   GET_PRODUCTS_BY_ID,
@@ -32,3 +32,5 @@ export default {
   CART_REMOVE_PRODUCT,
   FILTER_BY_PRICE_RANGE,
 };
+
+export default TYPES;
