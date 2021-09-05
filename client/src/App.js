@@ -8,7 +8,10 @@ import Detail   from './components/Detail/Detail';
 import Error404 from './components/Error404/Error404';
 
 import './App.css';
+import SignInOutContainer from './components/Login';
 import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import Checkout from './components/Checkout/Index';
 import Company from './components/Company/Company';
 import Team from './components/Team/Team';
 import Our from './components/Our/Our';
@@ -22,9 +25,10 @@ function App() {
     <Route exact path='/detail/:id' component = {Detail}/>
     <Route exact path='/shop'       component = {Shop}/>
     <Route exact path='/cart'       component = {Cart}/>
+    <Route exact path='/checkout'   component = {Checkout}/>
     <Route exact path='/about'      component = {About}/>
     <Route exact path= '/help'      component = {Help}/>
-    <Route exact path= '/login'      component = {Login}/>
+    <Route exact path= '/login'      component = {SignInOutContainer}/>
     <Route exact path= '/company'      component = {Company}/>
     <Route exact path= '/team'      component = {Team}/>
     <Route exact path= '/our'      component = {Our}/>
