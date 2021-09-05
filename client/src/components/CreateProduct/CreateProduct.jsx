@@ -35,7 +35,7 @@ function addProdcts () {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(addProdct(input));
+    dispatch(addProduct(input));
     alert("Producto creado exitosamente.");
     setInput({
       image_url: '',
