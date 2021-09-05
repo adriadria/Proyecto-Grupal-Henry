@@ -7,10 +7,15 @@ const initialState = {
     filtered: [],
     searchResults: [],
   },
-  createdProduct: [],
   productDetails: [],
   categories: [],
+  categoryDetails: [],
+  cart: {
+    listProducts: [],
+    total: 0,
+  },
   loading: false,
+  dataState: "all",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -18,6 +23,7 @@ const rootReducer = (state = initialState, action) => {
     case types.GET_PRODUCTS:
       return {
         ...state,
+        dataState: "all",
         products: {
           ...state.products,
           all: action.payload,
@@ -27,6 +33,7 @@ const rootReducer = (state = initialState, action) => {
     case types.GET_PRODUCTS_BY_NAME:
       return {
         ...state,
+        dataState: "search",
         products: {
           ...state.products,
           searchResults: action.payload,
@@ -42,13 +49,43 @@ const rootReducer = (state = initialState, action) => {
     case types.POST_PRODUCT:
       return {
         ...state,
-        createdProduct: action.payload,
+      };
+
+    case types.POST_CATEGORY:
+      return {
+        ...state,
       };
 
     case types.GET_CATEGORIES:
       return {
         ...state,
         categories: action.payload,
+      };
+
+    case types.GET_CATEGORY_DETAILS:
+      return {
+        ...state,
+        categoryDetails: action.payload,
+      };
+
+    case types.CART_ADD_PRODUCT:
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          listProducts: utils.addProductToCart(state, action.payload),
+        },
+      };
+
+    case types.CART_REMOVE_PRODUCT:
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          listProducts: state.cart.listProducts.filter(
+            (elem) => elem._id !== action.payload
+          ),
+        },
       };
 
     case types.ORDER_BY_PRICE:
@@ -61,6 +98,7 @@ const rootReducer = (state = initialState, action) => {
       const allProducts = state.products.all;
       return {
         ...state,
+        dataState: utils.filterByCategoryState(action.payload),
         products: {
           ...state.products,
           filtered: utils.filterByCategory(allProducts, action.payload),

@@ -11,26 +11,26 @@ const Footer = () => {
         <div className={styles.links}>
         <div className={styles.list}>
           <ul>Menu</ul>
-            <NavLink to="/"><li>Inicio</li></NavLink>
-            <NavLink to="/about"><li>Sobre de Nosotros</li></NavLink>
-            <NavLink to="/shop"><li>Tienda</li></NavLink>
-            <NavLink to="/help"><li>Ayuda</li></NavLink>
-            <NavLink to="/login"><li>Logueo</li></NavLink>
+            <NavLink to="/" className={styles.list}><li>Inicio</li></NavLink>
+            <NavLink to="/about" className={styles.list}><li>Sobre de Nosotros</li></NavLink>
+            <NavLink to="/shop" className={styles.list}><li>Tienda</li></NavLink>
+            <NavLink to="/help" className={styles.list}><li>Ayuda</li></NavLink>
+            <NavLink to="/login" className={styles.list}><li>Logueo</li></NavLink>
         </div>
         <div className={styles.list}>
           <ul>Empresa</ul>
-            <NavLink to="/company"><li>La Empresa</li></NavLink>
+            <NavLink to="/company" className={styles.list}><li>La Empresa</li></NavLink>
         </div>
         <div className={styles.list}>
           <ul>Conocenos</ul>
-            <NavLink to="/team"><li>El Equipo</li></NavLink>
-            <NavLink to="/our"><li>Nuestra Historia</li></NavLink>
+            <NavLink to="/team" className={styles.list}><li>El Equipo</li></NavLink>
+            <NavLink to="/our" className={styles.list}><li>Nuestra Historia</li></NavLink>
         </div>
         <div className={styles.list}>
           <ul>Encuentranos</ul>
-            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer"><li>Facebook</li></a>
-            <a href="https://twitter.com/" target="_blank" rel="noreferrer"><li>Twitter</li></a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer"><li>Instagram</li></a>
+            <a className={styles.list} href="https://www.facebook.com/" target="_blank" rel="noreferrer"><li className={styles.list}>Facebook</li></a>
+            <a className={styles.list} href="https://twitter.com/" target="_blank" rel="noreferrer"><li className={styles.list}>Twitter</li></a>
+            <a className={styles.list} href="https://www.instagram.com/" target="_blank" rel="noreferrer"><li className={styles.list}>Instagram</li></a>
         </div>
         </div>
       </div>
