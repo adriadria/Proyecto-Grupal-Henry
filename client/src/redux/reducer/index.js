@@ -12,7 +12,7 @@ const initialState = {
   categories: [],
   categoryDetails: [],
   cart: {
-    listProducts: [{_id: "asd", name: "silla", price: 200.00 }, {_id: "kkkk", name: "mesa", price: 300.00 }, {_id: "dfdfdf", name: "desk", price: 500.00 }],
+    listProducts: [],
     total: 0,
   },
   loading: false,
