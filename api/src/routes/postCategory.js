@@ -4,9 +4,9 @@ const Category = require('../models/Category');
 const router = Router();
 
 router.post('/', async (req, res) => {
-    const {name} = req.body;
+    const {name, products} = req.body;
     try{
-        const category = new Category({name});
+        const category = new Category({name, products});
         await category.save();
         return res.status(200).send(`${name} category successfully created`);
     }catch(e){

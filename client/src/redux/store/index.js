@@ -1,13 +1,11 @@
-import {createStore, applyMiddleware, compose} from 'redux'
-import rootReducer from '../reducer/index' //el reducer
-import thunk from 'redux-thunk' //nos ayuda a trabajar con promesas con redux
-//import {composeWithDevTools} from 'redux-devtools-extension' //nos ayuda a ver los state de la herramienta
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+import rootReducer from "../reducer/index";
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-export const store = createStore(
-    rootReducer,
-    composeEnhancers(
-        applyMiddleware(thunk)
-    )
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
 );
+
+export default store;

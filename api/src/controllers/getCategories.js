@@ -4,4 +4,4 @@ async function getCategories(){
     return await Category.find();
 }
 
-module.exports = getCategories;
+module.exports = getCategories
