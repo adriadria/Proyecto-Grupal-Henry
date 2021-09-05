@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../../redux/actions';
+import { 
+    getProducts,
+    getCategoryDetails,
+} from '../../redux/actions';
 import Product from '../Product/Product';
 import prodsStyle from './Products.module.css';
 import Footer from '../Footer/Footer'
@@ -12,16 +15,27 @@ const Products = () => {
     var searchArr = useSelector(state => state.products.searchResults);
     var filtered = useSelector(state => state.products.filtered);
     var dataState = useSelector(state => state.dataState);
+    var categoryDetails = useSelector(state => state.categoryDetails);
+    //console.log('CatDet',categoryDetails)
     
     if(dataState === "all") showData = productsArr;
     else if(dataState === "search") showData = searchArr;
     else if(dataState === "filter") showData = filtered;
     const dispatch = useDispatch();
-    console.log(dataState);
-
+    
     useEffect(() => {
-		dispatch(getProducts()); 
-	}, [dispatch]);
+        dispatch(getProducts()); 
+    }, [dispatch]);
+    
+    /* showData = showData.map(e => {
+        e.categories = e.categories.map(c => {
+            //console.log(categoryDetails)
+            //c = 'otro'
+            return c
+        })
+        return e
+    }); */
+
 
 
 	return (

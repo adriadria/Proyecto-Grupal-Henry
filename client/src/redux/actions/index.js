@@ -13,6 +13,7 @@ export const getProducts = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`${BASE_URL}/products`);
+      console.log('aa',data)
       return dispatch({
         type: types.GET_PRODUCTS,
         payload: data,

@@ -4,9 +4,6 @@ import prodStyle from './Product.module.css';
 
 const Product = ({ id, image, name, price, catArr }) => {
 
-	function algo (value){
-		return "abc"
-	}
 	return (
 		<Link to={`/detail/${id}`}>
 			{/* 
@@ -29,7 +26,10 @@ const Product = ({ id, image, name, price, catArr }) => {
 				<div className={prodStyle.cardbody}>
 			 		{
 						catArr.map(e => (
-							<div className={prodStyle.tag}>{ algo(e)}</div>
+							<div className={prodStyle.tag} key={e}>{
+								e
+
+							}</div>
 						))
 					 }
 					{/* <div className={prodStyle.tag}>General</div> */}
