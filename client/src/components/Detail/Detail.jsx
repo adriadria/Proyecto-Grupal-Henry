@@ -10,7 +10,6 @@ export default function Detail() {
 	const location = useLocation();
 	var productDetail = useSelector((state) => state.productDetails);
 	var productId = location.pathname.split('/').pop();
-	//console.log(productDetail);
 
 	useEffect(() => {
 		dispatch(getProductsById(productId));
@@ -44,12 +43,6 @@ export default function Detail() {
 				</div>
                 </div>
 			</div>
-
-			{/* <Product 
-                    id={1} 
-                    image={'https://medias.maisonsdumonde.com/image/upload/q_auto,f_auto/w_2000/img/escritorio-de-metal-blanco-y-abeto-con-1-cajon-y-1-puerta-1000-4-2-192784_1.jpg'}
-                    name={'SUNSET'}
-                    /> */}
 		</div>
 	);
 }
