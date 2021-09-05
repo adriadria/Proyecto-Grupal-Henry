@@ -23,14 +23,14 @@ const filterByCategory = (allProducts, option) => {
 };
 
 const filterByCategoryState = (option) => {
-  return option === "all_categories"
-    ? "all"
-    : "filter";
+  return option === "all_categories" ? "all" : "filter";
 };
 
-export default {
+const utils = {
   orderPrice,
   filterByCategory,
   filterByPriceRange,
   filterByCategoryState,
 };
+
+export default utils;
