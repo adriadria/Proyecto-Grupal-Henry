@@ -57,13 +57,12 @@ export const getProductsById = (id) => {
   };
 };
 
-export const addProdct = (product) => {
+export const addProduct = (product) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`${BASE_URL}/products/addProducts`, product);
+      await axios.post(`${BASE_URL}/products/addProducts`, product);
       return dispatch({
         type: types.POST_PRODUCT,
-        payload: data,
       });
     } catch (err) {
       console.log(err);
@@ -89,13 +88,26 @@ export const getCategories = () => {
 export const getCategoryDetails = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`${BASE_URL}/categories/detail/${id}`)
+      const { data } = await axios.get(`${BASE_URL}/categories/detail/${id}`);
       return dispatch({
         type: types.GET_CATEGORY_DETAILS,
         payload: data,
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
+    }
+  };
+};
+
+export const addCategory = (category) => {
+  return async (dispatch) => {
+    try {
+      await axios.post(`${BASE_URL}/categories/create`, category);
+      return dispatch({
+        type: types.POST_CATEGORY,
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 };
