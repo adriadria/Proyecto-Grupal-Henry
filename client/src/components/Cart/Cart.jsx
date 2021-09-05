@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeFromCart, updateQuantity } from "../../redux/actions/index";
+import * as actions from "../../redux/actions/index";
 import BeatLoader from "react-spinners/BeatLoader";
 import {
   Container,
@@ -15,7 +15,12 @@ import {
 
 const Cart = () => {
   const dispatch = useDispatch();
+
   const stateListProducts = useSelector((state) => state.cart.listProducts);
+
+  const totalPrice = stateListProducts.reduce((acc, product) => {
+    return (acc += product.quantity * product.price);
+  }, 0);
 
   const listProducts = stateListProducts.map((elem, idx) => (
     <Card key={idx} style={{ margin: 20, padding: 20 }} variant="outlined">
@@ -24,31 +29,33 @@ const Cart = () => {
         <Typography variant="h5" component="h2">
           {elem.name}
         </Typography>
-        <Typography variant="body2">Precio: $ {elem.price * elem.quantity}</Typography>
+        <Typography variant="body2">
+          Precio: $ {elem.price * elem.quantity}
+        </Typography>
         <Typography>Cantidad: {elem.quantity}</Typography>
         <ButtonGroup disableElevation variant="contained">
           <Button
             color="primary"
             onClick={() =>
-              dispatch(updateQuantity({ id: elem._id, value: "max" }))
+              dispatch(actions.updateQuantity({ id: elem._id, value: "min" }))
             }
           >
-            +
+            -
           </Button>
           <Button
             color="primary"
             onClick={() =>
-              dispatch(updateQuantity({ id: elem._id, value: "min" }))
+              dispatch(actions.updateQuantity({ id: elem._id, value: "max" }))
             }
           >
-            -
+            +
           </Button>
         </ButtonGroup>
       </CardContent>
       <Button
         variant="contained"
         color="secondary"
-        onClick={() => dispatch(removeFromCart(elem._id))}
+        onClick={() => dispatch(actions.removeFromCart(elem._id))}
       >
         Remove
       </Button>
@@ -79,12 +86,13 @@ const Cart = () => {
         </Button>
       </Link>
       <Grid item style={{ margin: 20 }}>
-        {/* Precio total: {total} */}
+        <Typography>Precio total: {totalPrice}</Typography>
         {listProducts}
         <Grid item>
           {listProducts.length && (
             <Link to="/checkout">
               <Button
+                onClick={() => dispatch(actions.updateTotalPrice(totalPrice))}
                 style={{ margin: 30 }}
                 variant="contained"
                 color="primary"

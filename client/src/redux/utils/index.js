@@ -30,7 +30,7 @@ const addProductToCart = (state, id) => {
   const product = state.products.all.find((elem) => elem._id === id);
   if (product && state.cart.listProducts.includes(product)) {
     return state.cart.listProducts;
-  } else {
+  } else if (product) {
     product.quantity = 1;
     return [...state.cart.listProducts, product];
   }

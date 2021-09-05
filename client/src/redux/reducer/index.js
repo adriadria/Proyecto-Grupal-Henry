@@ -123,6 +123,15 @@ const rootReducer = (state = initialState, action) => {
         };
       }
 
+    case types.UPDATE_TOTAL_PRICE:
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          totalPrice: action.payload,
+        },
+      };
+
     case types.CART_REMOVE_PRODUCT:
       return {
         ...state,
@@ -137,7 +146,15 @@ const rootReducer = (state = initialState, action) => {
     case types.ORDER_BY_PRICE:
       return {
         ...state,
-        products: utils.orderPrice(state, action.payload),
+        products: {
+          ...state.products,
+          all: utils.orderPrice(state.products.all, action.payload),
+          searchResults: utils.orderPrice(
+            state.products.searchResults,
+            action.payload
+          ),
+          filtered: utils.orderPrice(state.products.filtered, action.payload),
+        },
       };
 
     case types.FILTER_BY_CATEGORY:
