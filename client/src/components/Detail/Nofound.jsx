@@ -14,7 +14,7 @@ export default function Notfound() {
 						<div className={detStyle.data4}>
 							<b>Resultado: </b><br/>
 							😔 No se encontraron Productos para mostrar...<br/><br/>
-							Por favor prueba otro filtro o puedes volver a la pagina de Inicio
+							Por favor prueba otro filtro, otra busqueda o puedes volver a la pagina de Inicio
 						</div>
 					</div>
                 </div>
