@@ -83,10 +83,6 @@ const rootReducer = (state = initialState, action) => {
       ) {
         return {
           ...state,
-          cart: {
-            ...state.cart,
-            listProducts: state.cart.listProducts,
-          },
         };
       } else {
         return {
@@ -99,36 +95,16 @@ const rootReducer = (state = initialState, action) => {
       }
 
     case types.UPDATE_QUANTITY:
-      if (action.payload.value === "min") {
-        return {
-          ...state,
-          cart: {
-            ...state.cart,
-            listProducts: state.cart.listProducts.map((elem) => {
-              if (action.payload.id === elem._id) {
-                if (elem.quantity > 1) {
-                  elem.quantity -= 1;
-                }
-              }
-              return elem;
-            }),
-          },
-        };
-      }
-      if (action.payload.value === "max") {
-        return {
-          ...state,
-          cart: {
-            ...state.cart,
-            listProducts: state.cart.listProducts.map((elem) => {
-              if (action.payload.id === elem._id) {
-                elem.quantity += 1;
-              }
-              return elem;
-            }),
-          },
-        };
-      }
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          listProducts: utils.updateQuantity(
+            state.cart.listProducts,
+            action.payload
+          ),
+        },
+      };
 
     // eslint-disable-next-line no-fallthrough
     case types.UPDATE_TOTAL_PRICE:
@@ -147,9 +123,9 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         cart: {
           ...state.cart,
-          listProducts: state.cart.listProducts.filter(
-            (elem) => elem._id !== action.payload
-          ),
+          listProducts: state.cart.listProducts.filter((elem) => {
+            return elem._id !== action.payload;
+          }),
         },
       };
 
