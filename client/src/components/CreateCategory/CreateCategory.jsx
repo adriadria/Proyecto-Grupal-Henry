@@ -3,7 +3,17 @@ import { useHistory } from 'react-router-dom';
 import { addCategory } from '../../redux/actions/index';
 import { useDispatch } from 'react-redux';
 
-function addProdcts () {
+export function validate(input) {
+  let errors = {};
+  if (!input.name) {
+    errors.name = 'El nombre de la categoría es obligatorio.';
+  } else if (!/([A-Z]|[a-z])\w+/.test(input.name)) {
+    errors.name = 'El nombre de la categoría es inválido.';
+  }
+  return errors;
+};
+
+export default function addCategories () {
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -38,7 +48,9 @@ function addProdcts () {
             type='text'
             value={input.name}
             name='name'
+            className={`${errors.name && 'danger'}`}
             onChange={e => handleChange(e)}>
+              {errors.name && (<p className="danger">{errors.name}</p>)}
           </input>
         </div>
         <div>
