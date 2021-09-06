@@ -1,5 +1,6 @@
 import types from "../constants/types";
 import utils from "../utils/index";
+import { USER_SIGNUP_REQUEST, USER_SIGNUP_SUCCESS, USER_SIGNUP_FAIL, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT } from "../constants/userConstants";
 
 const initialState = {
   products: {
@@ -16,6 +17,11 @@ const initialState = {
   },
   loading: false,
   dataState: "all",
+  userInfo: localStorage.getItem('userInfo')
+  ? JSON.parse(localStorage.getItem('userInfo'))
+  : null,
+  signinError:'',
+  signupError: ''
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -74,6 +80,7 @@ const rootReducer = (state = initialState, action) => {
         cart: {
           ...state.cart,
           listProducts: utils.addProductToCart(state, action.payload),
+          total: action.payload
         },
       };
 
@@ -113,7 +120,54 @@ const rootReducer = (state = initialState, action) => {
           filtered: utils.filterByPriceRange(state, action.payload),
         },
       };
+    
+    case USER_SIGNIN_REQUEST:
+      return { 
+        ...state,
+        loading: true
+        };
+          
+    case USER_SIGNIN_SUCCESS:
+      return { 
+        ...state,
+        loading: false, 
+        userInfo: action.payload 
+      };
 
+    case USER_SIGNIN_FAIL:
+      return { 
+        ...state,
+        loading: false, 
+        signinError: action.payload
+      };
+
+    case USER_SIGNOUT:
+      return {
+        ...state,
+        userInfo: null,
+        cart: {}
+      };
+
+    case USER_SIGNUP_REQUEST:
+      return { 
+        ...state,
+        loading: true
+        };
+          
+    case USER_SIGNUP_SUCCESS:
+      return { 
+        ...state,
+        loading: false, 
+        userInfo: action.payload 
+      };
+
+    case USER_SIGNUP_FAIL:
+      return { 
+        ...state,
+        loading: false, 
+        signupError: action.payload
+      };
+  
     default:
       return state;
   }
