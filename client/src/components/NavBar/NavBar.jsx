@@ -11,14 +11,16 @@ import {
   orderByPrice,
   orderByRangePrice,
 } from "../../redux/actions";
+import { signout } from "../../redux/actions/userActions";
 
 const NavBar = ({ setOrder }) => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
+  const userInfo = useSelector(state => state.userInfo);
 
   useEffect(() => {
     dispatch(getCategories());
-  }, [dispatch]);
+  }, [userInfo, dispatch]);
 
   function handleClick(e) {
     dispatch(getProducts());
@@ -26,6 +28,11 @@ const NavBar = ({ setOrder }) => {
 
   function handleFilterCategories(e) {
     dispatch(filterByCategory(e.target.value));
+  }
+
+
+  function handleSignout() {
+    dispatch(signout());
   }
 
   const handleOrder = (e) => {
@@ -38,6 +45,7 @@ const NavBar = ({ setOrder }) => {
     //console.log(e.target.value)
     //setOrder(e.target.value);
   };
+
 
   let rangos = ["0-500", "501-1000", "1001-1500", "1501-2000", "2001-2500"];
 
@@ -101,9 +109,21 @@ const NavBar = ({ setOrder }) => {
             <NavLink className={styles.link_text} to="/help">
               Ayuda
             </NavLink>
-            <NavLink className={styles.link_text} to="/login">
-              Logueo
-            </NavLink>
+            {userInfo 
+              ? (<div className="dropdown">
+                <NavLink className={styles.link_text} to="#">
+                  {userInfo.name} <i className="fa fa-caret-down"></i>
+                </NavLink>
+                <ul className="dropdown-content">
+                  <NavLink to="#signout" onClick={handleSignout}>
+                    Sign Out
+                  </NavLink>
+                </ul>
+              </div>)
+              : (<NavLink className={styles.link_text} to="/login">
+                  Logueo
+                </NavLink>)
+            }
           </div>
           <NavLink className={styles.link_cart} to="/cart">
             <button className={styles.boton}>🛒 Tu Carrito</button>

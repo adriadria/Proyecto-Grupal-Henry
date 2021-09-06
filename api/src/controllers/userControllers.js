@@ -18,7 +18,15 @@ async function signUp(req, res ,next) {
                     next(err);
                     return res.send({msg: 'Hubo algun error con los datos proporcionados'});
                 }else
-                    return res.send({msg: 'Usuario creado con exito!', data: userCreated});
+                    return res.send({
+                        msg: 'Usuario creado con exito!',
+                        data: {
+                            _id: userCreated._id,
+                            name: userCreated.name,
+                            email: userCreated.email,
+                            isAdmin: userCreated.isAdmin,
+                            token: generateToken(userCreated)
+                        }});
             });
         }
     } catch (error) {
@@ -36,7 +44,7 @@ async function signIn(req, res, next) {
                 res.send({
                     _id: user._id,
                     name: user.name,
-                    email:user.email,
+                    email: user.email,
                     isAdmin: user.isAdmin,
                     token: generateToken(user)
                 }) :
