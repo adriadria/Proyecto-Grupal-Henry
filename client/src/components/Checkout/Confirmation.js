@@ -15,8 +15,9 @@ const Confirmation = ({ orderInfo, orderError }) => {
   return (
     <div className="confirmation">
       <Typography variant="h5">
-        Thank you {orderInfo.customer.firstname} {orderInfo.customer.lastname}{" "}
+        Thank you 
         for your purchase!
+        {/* {orderInfo.customer.firstname} {orderInfo.customer.lastname}{" "} */}
       </Typography>
       <Button component={Link} variant="contained" type="button" to="/">
         Continue shopping
