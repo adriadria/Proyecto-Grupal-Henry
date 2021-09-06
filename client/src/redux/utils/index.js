@@ -36,12 +36,34 @@ const addProductToCart = (state, id) => {
   }
 };
 
+const updateQuantity = (state, { id, value }) => {
+  switch (value) {
+    case "min":
+      return state.map((elem) => {
+        if (id === elem._id) {
+          if (elem.quantity > 1) elem.quantity--;
+        }
+        return elem;
+      });
+
+    case "max":
+      return state.map((elem) => {
+        if (id === elem._id) elem.quantity++;
+        return elem;
+      });
+
+    default:
+      return state;
+  }
+};
+
 const utils = {
   orderPrice,
   filterByCategory,
   filterByPriceRange,
   filterByCategoryState,
   addProductToCart,
+  updateQuantity,
 };
 
 export default utils;
