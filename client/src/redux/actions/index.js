@@ -154,3 +154,10 @@ export const orderByPrice = (payload) => {
     payload,
   };
 };
+
+export const orderByRangePrice = (payload) => {
+  return {
+    type: types.FILTER_BY_PRICE_RANGE,
+    payload,
+  };
+};

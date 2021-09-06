@@ -11,9 +11,9 @@ const orderPrice = (arr, option) => {
   }
 };
 
-const filterByPriceRange = (state, { min, max }) => {
-  const allProducts = state.products.all;
-  return allProducts.filter(({ price }) => price >= min && price <= max);
+const filterByPriceRange = (state, rango) => {
+  const [min,max] = rango.split('-')
+  return state.filter(({ price }) => price >= min && price <= max);
 };
 
 const filterByCategory = (allProducts, option) => {

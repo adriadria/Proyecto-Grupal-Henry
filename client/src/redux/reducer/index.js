@@ -19,6 +19,7 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
+  
   switch (action.type) {
     case types.GET_PRODUCTS:
       return {
@@ -123,6 +124,7 @@ const rootReducer = (state = initialState, action) => {
         };
       }
 
+    // eslint-disable-next-line no-fallthrough
     case types.UPDATE_TOTAL_PRICE:
       return {
         ...state,
@@ -149,10 +151,7 @@ const rootReducer = (state = initialState, action) => {
         products: {
           ...state.products,
           all: utils.orderPrice(state.products.all, action.payload),
-          searchResults: utils.orderPrice(
-            state.products.searchResults,
-            action.payload
-          ),
+          searchResults: utils.orderPrice(state.products.searchResults,action.payload),
           filtered: utils.orderPrice(state.products.filtered, action.payload),
         },
       };
@@ -164,16 +163,17 @@ const rootReducer = (state = initialState, action) => {
         dataState: utils.filterByCategoryState(action.payload),
         products: {
           ...state.products,
-          filtered: utils.filterByCategory(allProducts, action.payload),
+          all: utils.filterByCategory(allProducts, action.payload),
         },
       };
 
     case types.FILTER_BY_PRICE_RANGE:
       return {
         ...state,
+        dataState: utils.filterByCategoryState(action.payload),
         products: {
           ...state.products,
-          filtered: utils.filterByPriceRange(state, action.payload),
+          filtered: utils.filterByPriceRange(state.products.all, action.payload),
         },
       };
 
