@@ -137,7 +137,7 @@ const rootReducer = (state = initialState, action) => {
         cart: {
           ...state.cart,
           listProducts: utils.addProductToCart(state, action.payload),
-          total: action.payload
+          total: action.payload,
           totalPrice: action.payload,
         },
       };
@@ -171,7 +171,7 @@ const rootReducer = (state = initialState, action) => {
         dataState: utils.filterByCategoryState(action.payload),
         products: {
           ...state.products,
-          all: utils.filterByCategory(allProducts, action.payload),
+          filtered: utils.filterByCategory(allProducts, action.payload),
         },
       };
 
