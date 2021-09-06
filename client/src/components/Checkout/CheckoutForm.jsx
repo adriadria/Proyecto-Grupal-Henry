@@ -8,16 +8,20 @@ import {
     FormControl,
   } from "@material-ui/core";
   import { Link } from "react-router-dom";
-  
+  import { useForm } from "react-hook-form";
   const CheckoutForm = ({
+    
     user = {},
     orderInfo,
     handleChange,
-    handleSubmit,
+    handleSubmit2,
     checkoutData,
     handleSelectChange,
-  }) => (
-    <form onSubmit={handleSubmit} autoComplete="off">
+  }) => {
+    const { register, handleSubmit, control, formState:{errors} } = useForm();
+   
+    return(
+    <form onSubmit={handleSubmit2} autoComplete="off">
       <Grid container spacing={4}>
         <Grid item xs={12} sm={6}>
           <TextField
@@ -36,7 +40,7 @@ import {
             fullWidth
             id="first-name"
             name="lastName"
-            label="First Name"
+            label="Last Name"
             value={user.lastName}
             onChange={handleChange}
           />
@@ -57,10 +61,22 @@ import {
           <TextField
             required
             fullWidth
-            id="address"
-            name="address"
-            value={user.address}
-            label="Address line 1"
+            id="phone"
+            name="phone"
+            label="Phone"
+            value={user.phone}
+            onChange={handleChange}
+          />
+        </Grid>
+      
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            fullWidth
+            id="country"
+            name="country"
+            label="Country"
+            value={user.country}
             onChange={handleChange}
           />
         </Grid>
@@ -72,6 +88,17 @@ import {
             name="city"
             label="City"
             value={user.city}
+            onChange={handleChange}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            fullWidth
+            id="address"
+            name="address"
+            value={user.address}
+            label="Address"
             onChange={handleChange}
           />
         </Grid>
@@ -155,7 +182,7 @@ import {
       </Grid>
   
       <div className="actions">
-        <Button size="medium" to="/basket" component={Link} variant="contained">
+        <Button size="medium" to="/cart" component={Link} variant="contained">
           Go Back
         </Button>
         <Button type="submit" size="medium" color="secondary" variant="contained">
@@ -163,7 +190,8 @@ import {
         </Button>
       </div>
     </form>
-  );
+    )
+  }
   
   export default CheckoutForm;
   

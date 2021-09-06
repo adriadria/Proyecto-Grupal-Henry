@@ -11,6 +11,7 @@
 	justify-content: center;
 	border: 1px solid black;
 	border-radius: 10px;
+	background-color: white;
 }
 
 .info1 {
@@ -99,6 +100,7 @@
 	border-radius: 10px;
 	padding-left: 10px;
 	margin-bottom: 35px;
+	background-color: white;
 }
 
 .NFinfo2 {

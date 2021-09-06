@@ -6,6 +6,7 @@ import Products from "../Products/Products";
 const Home = () => {
   // eslint-disable-next-line
   const [order, setOrder] = React.useState("");
+  console.log('order:',order)
   return (
     <div>
       <NavBar setOrder={setOrder} />

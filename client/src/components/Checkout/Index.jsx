@@ -51,7 +51,7 @@ const Checkout = ({ basketData, orderInfo, orderError, handleCheckout }) => {
 
   const history = useHistory();
 
-  const handleSubmit = (e) => {
+  const handleSubmit2 = (e) => {
     e.preventDefault();
     setBookingStep("order-details");
   };
@@ -232,7 +232,7 @@ const Checkout = ({ basketData, orderInfo, orderError, handleCheckout }) => {
             orderError,
             bookingStep,
             handleChange,
-            handleSubmit,
+            handleSubmit2,
             checkoutData,
             handleBackStep,
             handleNextStep,

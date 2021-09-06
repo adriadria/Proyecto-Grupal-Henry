@@ -9,15 +9,18 @@ import {
   getProducts,
   filterByCategory,
   orderByPrice,
+  orderByRangePrice,
 } from "../../redux/actions";
+import { signout } from "../../redux/actions/userActions";
 
 const NavBar = ({ setOrder }) => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
+  const userInfo = useSelector(state => state.userInfo);
 
   useEffect(() => {
     dispatch(getCategories());
-  }, [dispatch]);
+  }, [userInfo, dispatch]);
 
   function handleClick(e) {
     dispatch(getProducts());
@@ -27,10 +30,22 @@ const NavBar = ({ setOrder }) => {
     dispatch(filterByCategory(e.target.value));
   }
 
+
+  function handleSignout() {
+    dispatch(signout());
+  }
+
   const handleOrder = (e) => {
     dispatch(orderByPrice(e.target.value));
     setOrder(e.target.value);
   };
+
+  const handleFilterRangePrice = (e) => {
+    dispatch(orderByRangePrice(e.target.value));
+    //console.log(e.target.value)
+    setOrder(e.target.value);
+  };
+
 
   let rangos = ["0-500", "501-1000", "1001-1500", "1501-2000", "2001-2500"];
 
@@ -55,10 +70,10 @@ const NavBar = ({ setOrder }) => {
           </select>
           <select
             className={styles.select}
-            //onChange={(e) => handleFilterCategories(e)}
+            onChange={(e) => handleFilterRangePrice(e)}
           >
-            <option value="rango" key="0">
-              Precios
+            <option value="all_categories" key="0">
+              Todos Precios
             </option>
             {rangos.map((rango, index) => (
               <option key={index}>{rango}</option>
@@ -94,9 +109,21 @@ const NavBar = ({ setOrder }) => {
             <NavLink className={styles.link_text} to="/help">
               Ayuda
             </NavLink>
-            <NavLink className={styles.link_text} to="/login">
-              Logueo
-            </NavLink>
+            {userInfo 
+              ? (<div className="dropdown">
+                <NavLink className={styles.link_text} to="#">
+                  {userInfo.name} <i className="fa fa-caret-down"></i>
+                </NavLink>
+                <ul className="dropdown-content">
+                  <NavLink to="#signout" onClick={handleSignout}>
+                    Sign Out
+                  </NavLink>
+                </ul>
+              </div>)
+              : (<NavLink className={styles.link_text} to="/login">
+                  Logueo
+                </NavLink>)
+            }
           </div>
           <NavLink className={styles.link_cart} to="/cart">
             <button className={styles.boton}>🛒 Tu Carrito</button>
