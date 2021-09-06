@@ -5,14 +5,15 @@ import { NavLink } from "react-router-dom";
 import Logo from "../../media/LogoEstiloPropio.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  //filterProductsByCategories,
   getCategories,
   getProducts,
   filterByCategory,
+  orderByPrice,
+  orderByRangePrice,
 } from "../../redux/actions";
 import { signout } from "../../redux/actions/userActions";
 
-const NavBar = () => {
+const NavBar = ({ setOrder }) => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
   const userInfo = useSelector(state => state.userInfo);
@@ -22,7 +23,6 @@ const NavBar = () => {
   }, [userInfo, dispatch]);
 
   function handleClick(e) {
-    //e.preventDefault();
     dispatch(getProducts());
   }
 
@@ -30,9 +30,23 @@ const NavBar = () => {
     dispatch(filterByCategory(e.target.value));
   }
 
+
   function handleSignout() {
     dispatch(signout());
   }
+
+  const handleOrder = (e) => {
+    dispatch(orderByPrice(e.target.value));
+    setOrder(e.target.value);
+  };
+
+  const handleFilterRangePrice = (e) => {
+    dispatch(orderByRangePrice(e.target.value));
+    //console.log(e.target.value)
+    //setOrder(e.target.value);
+  };
+
+
   let rangos = ["0-500", "501-1000", "1001-1500", "1501-2000", "2001-2500"];
 
   return (
@@ -56,26 +70,23 @@ const NavBar = () => {
           </select>
           <select
             className={styles.select}
-            //onChange={(e) => handleFilterCategories(e)}
+            onChange={(e) => handleFilterRangePrice(e)}
           >
-            <option value="rango" key="0">
-              Precios
+            <option value="all_categories" key="0">
+              Todos Precios
             </option>
             {rangos.map((rango, index) => (
               <option key={index}>{rango}</option>
             ))}
           </select>
-          <select
-            className={styles.select}
-            //onChange={(e) => handleFilterCategories(e)}
-          >
+          <select className={styles.select} onChange={handleOrder}>
             <option value="all" key="0">
               Ordenar por Precio
             </option>
-            <option value="ascendente" key="1">
+            <option value="price_asc" key="1">
               Menor a Mayor
             </option>
-            <option value="descendente" key="2">
+            <option value="price_desc" key="2">
               Mayor a Menor
             </option>
           </select>

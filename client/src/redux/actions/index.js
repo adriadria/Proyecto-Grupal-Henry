@@ -28,7 +28,6 @@ export const getProducts = () => {
 };
 
 export const getProductsByName = (name) => {
-  // buscador --> desk? escritorio?
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`${BASE_URL}/products?name=${name}`);
@@ -43,7 +42,6 @@ export const getProductsByName = (name) => {
 };
 
 export const getProductsById = (id) => {
-  // click product --> id
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`${BASE_URL}/products/${id}`);
@@ -127,6 +125,20 @@ export const removeFromCart = (id) => {
   };
 };
 
+export const updateQuantity = (payload) => {
+  return {
+    type: types.UPDATE_QUANTITY,
+    payload,
+  };
+};
+
+export const updateTotalPrice = (payload) => {
+  return {
+    type: types.UPDATE_TOTAL_PRICE,
+    payload,
+  };
+};
+
 // Filter
 export const filterByCategory = (payload) => {
   return {
@@ -139,6 +151,13 @@ export const filterByCategory = (payload) => {
 export const orderByPrice = (payload) => {
   return {
     type: types.ORDER_BY_PRICE,
+    payload,
+  };
+};
+
+export const orderByRangePrice = (payload) => {
+  return {
+    type: types.FILTER_BY_PRICE_RANGE,
     payload,
   };
 };

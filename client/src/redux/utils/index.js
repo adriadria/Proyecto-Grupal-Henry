@@ -11,9 +11,9 @@ const orderPrice = (arr, option) => {
   }
 };
 
-const filterByPriceRange = (state, { min, max }) => {
-  const allProducts = state.products.all;
-  return allProducts.filter(({ price }) => price >= min && price <= max);
+const filterByPriceRange = (state, rango) => {
+  const [min,max] = rango.split('-')
+  return state.filter(({ price }) => price >= min && price <= max);
 };
 
 const filterByCategory = (allProducts, option) => {
@@ -28,9 +28,12 @@ const filterByCategoryState = (option) => {
 
 const addProductToCart = (state, id) => {
   const product = state.products.all.find((elem) => elem._id === id);
-  return product
-    ? [...state.cart.listProducts, product]
-    : state.cart.listProducts;
+  if (product && state.cart.listProducts.includes(product)) {
+    return state.cart.listProducts;
+  } else if (product) {
+    product.quantity = 1;
+    return [...state.cart.listProducts, product];
+  }
 };
 
 const utils = {
