@@ -10,12 +10,13 @@ import {
 } from "@material-ui/core";
 
 const BookingDetails = ({ checkoutData, handleBackStep, handleNextStep }) => {
-  const stateListProducts = useSelector((state) => state.cart.listProducts);
+  const Cart = useSelector((state) => state.cart);
   const [Subtotal, setSubtotal] = useState(0);
-  return (
+
+return(
   <>
     <List>
-      {stateListProducts.map((item) => (
+      {Cart.listProducts.map((item) => (
         <ListItem key={item.id}>
           {/* {setSubtotal(Subtotal*item.price*item.quantity)} */}
           <ListItemText
@@ -31,7 +32,7 @@ const BookingDetails = ({ checkoutData, handleBackStep, handleNextStep }) => {
         <ListItemText primary="Total price" />
         <Typography variant="body2">
           {/* {checkoutData.live.subtotal.formatted_with_code} */}
-          {Subtotal}
+          {Cart.totalPrice}
         </Typography>
       </ListItem>
     </List>

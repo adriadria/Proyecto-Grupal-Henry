@@ -7,7 +7,13 @@
   max-width: 600px;
   padding: 20px 15px;
   margin: 0 auto;
-  background-color: #c9d1d9;
+  background-color: #EEE4D0;
+}
+
+.checkout .paper button{
+ 
+  background-color: #CFA67C;
+  color: white;
 }
 
 .checkout .paper h6 {
@@ -26,10 +32,13 @@
 .checkout .paper .actions a {
   margin-right: 15px;
   margin-left: 0;
+  background-color: #CFA67C;
+  color: white;
+  
 }
 
 .checkout .paper .stepper {
-  background-color: #c8d1d9;
+  background-color: #EEE4D0;
 }
 
 .products-spinner {
@@ -44,5 +53,5 @@
 
 .confirmation a {
   color: #000000;
-  background-color: #03dac5;
+  background-color: #CFA67C;
 }
