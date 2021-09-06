@@ -8,8 +8,10 @@ body{
   color: black;
   margin: 0px;
   padding: 0px;
-  background: url('https://images.freeimages.com/images/large-previews/638/wood-wall-for-background-1634466.jpg');
+  background-image: url('https://images.freeimages.com/images/large-previews/638/wood-wall-for-background-1634466.jpg');
 }
+/* .body::before {content: ""; background-image: url('https://images.freeimages.com/images/large-previews/638/wood-wall-for-background-1634466.jpg'); opacity: 0.5; top: 0; left: 0; bottom: 0; right: 0; position: absolute;} */
+
 
 .App {
   text-align: center;
