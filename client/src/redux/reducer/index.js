@@ -141,14 +141,14 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case types.FILTER_BY_CATEGORY:
-      const allProducts = state.products.all;
+      console.log(state.categories);
+      let categoryFound = state.categories.find(c => c._id === action.payload);
       return {
         ...state,
-        dataState: utils.filterByCategoryState(action.payload),
+        dataState: 'filter',
         products: {
-          ...state.products,
-          filtered: utils.filterByCategory(allProducts, action.payload),
-        },
+          filtered: categoryFound.products
+        }
       };
 
     case types.FILTER_BY_PRICE_RANGE:

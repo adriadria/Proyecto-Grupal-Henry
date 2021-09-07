@@ -12,6 +12,7 @@ import {
   orderByRangePrice,
 } from "../../redux/actions";
 import { signout } from "../../redux/actions/userActions";
+import * as FaIcons from 'react-icons/fa';
 
 const NavBar = ({ setOrder }) => {
   const dispatch = useDispatch();
@@ -25,11 +26,6 @@ const NavBar = ({ setOrder }) => {
   function handleClick(e) {
     dispatch(getProducts());
   }
-
-  function handleFilterCategories(e) {
-    dispatch(filterByCategory(e.target.value));
-  }
-
 
   function handleSignout() {
     dispatch(signout());
@@ -55,14 +51,16 @@ const NavBar = ({ setOrder }) => {
         <img src={Logo} alt="logo" />
         <div className={styles.filtros}>
           <SearchBar />
+          <label htmlFor="categories">Categorías</label>
           <select
+            name="categories"
             className={styles.select}
-            onChange={(e) => handleFilterCategories(e)}
+            onChange={(e) => dispatch(filterByCategory(e.target.value))}
           >
             <option value="all_categories" key="0">
-              Categorias Todas
+              Todas
             </option>
-            {categories.map((cat) => (
+            {categories && categories.map((cat) => (
               <option value={cat._id} key={cat._id}>
                 {cat.name}
               </option>
@@ -126,7 +124,7 @@ const NavBar = ({ setOrder }) => {
             }
           </div>
           <NavLink className={styles.link_cart} to="/cart">
-            <button className={styles.boton}>🛒 Tu Carrito</button>
+            <button className={styles.boton}><span><FaIcons.FaCartPlus /></span> Tu Carrito</button>
           </NavLink>
         </div>
       </div>

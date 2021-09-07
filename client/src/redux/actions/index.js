@@ -140,11 +140,11 @@ export const updateTotalPrice = (payload) => {
 };
 
 // Filter
-export const filterByCategory = (payload) => {
-  return {
+export const filterByCategory = (id) => (dispatch) => {
+  return dispatch({
     type: types.FILTER_BY_CATEGORY,
-    payload,
-  };
+    payload: id
+  });
 };
 
 // Order
