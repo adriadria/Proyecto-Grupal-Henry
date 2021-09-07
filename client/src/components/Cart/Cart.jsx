@@ -17,12 +17,13 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const stateListProducts = useSelector((state) => state.cart.listProducts);
+  console.log(stateListProducts);
 
-  const totalPrice = stateListProducts.reduce((acc, product) => {
+  const totalPrice = stateListProducts?.reduce((acc, product) => {
     return (acc += product.quantity * product.price);
   }, 0);
 
-  const listProducts = stateListProducts.map((elem, idx) => (
+  const listProducts = stateListProducts?.map((elem, idx) => (
     <Card key={idx} style={{ margin: 20, padding: 20 }} variant="outlined">
       <CardContent>
         <img src={elem.image_url} alt={elem.name} width="200" height="200" />
@@ -86,16 +87,24 @@ const Cart = () => {
         </Button>
       </Link>
       <Grid item style={{ margin: 20 }}>
-        <Typography>Precio total: {totalPrice}</Typography>
+        <Typography>Precio total: $ {totalPrice}</Typography>
+        <Button
+          variant="contained"
+          style={{ margin: 30 }}
+          color="primary"
+          onClick={() => dispatch(actions.removeAll())}
+        >
+          REMOVE ALL
+        </Button>
         {listProducts}
         <Grid item>
           {listProducts.length && (
             <Link to="/checkout">
               <Button
-                onClick={() => dispatch(actions.updateTotalPrice(totalPrice))}
-                style={{ margin: 30 }}
                 variant="contained"
+                style={{ margin: 30 }}
                 color="primary"
+                onClick={() => dispatch(actions.updateTotalPrice(totalPrice))}
               >
                 CHECKOUT
               </Button>

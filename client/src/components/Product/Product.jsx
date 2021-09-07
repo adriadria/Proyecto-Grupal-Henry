@@ -10,7 +10,7 @@ const Product = ({ id, image, name, price, catArr }) => {
 		let found = categories.find((c) => {
 			return c._id === e;
 		});
-		return found.name;
+		return found?.name;
 	}
 
 	return (
