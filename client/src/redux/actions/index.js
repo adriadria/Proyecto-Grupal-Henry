@@ -140,6 +140,7 @@ export const updateTotalPrice = (payload) => {
 };
 
 // Filter
+// No se me ocurre como solucionar el problema q surge al elegir todas las categorias
 export const filterByCategory = (id) => (dispatch) => {
   return dispatch({
     type: types.FILTER_BY_CATEGORY,
