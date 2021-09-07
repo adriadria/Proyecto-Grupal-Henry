@@ -12,10 +12,11 @@ import {
 const BookingDetails = ({ checkoutData, handleBackStep, handleNextStep }) => {
   const Cart = useSelector((state) => state.cart);
   const [Subtotal, setSubtotal] = useState(0);
-
+  console.log(Cart)
 return(
   <>
     <List>
+      
       {Cart.listProducts.map((item) => (
         <ListItem key={item.id}>
           {/* {setSubtotal(Subtotal*item.price*item.quantity)} */}
