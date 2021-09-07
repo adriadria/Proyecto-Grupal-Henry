@@ -1,6 +1,6 @@
 import types from "../constants/types";
 import utils from "../utils/index";
-import { USER_SIGNUP_REQUEST, USER_SIGNUP_SUCCESS, USER_SIGNUP_FAIL, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT } from "../constants/userConstants";
+import * as userTypes from "../constants/userConstants";
 
 const initialState = {
   products: {
@@ -17,15 +17,14 @@ const initialState = {
   },
   loading: false,
   dataState: "all",
-  userInfo: localStorage.getItem('userInfo')
-  ? JSON.parse(localStorage.getItem('userInfo'))
-  : null,
-  signinError:'',
-  signupError: ''
+  userInfo: localStorage.getItem("userInfo")
+    ? JSON.parse(localStorage.getItem("userInfo"))
+    : null,
+  signinError: "",
+  signupError: "",
 };
 
 const rootReducer = (state = initialState, action) => {
-  
   switch (action.type) {
     case types.GET_PRODUCTS:
       return {
@@ -76,23 +75,13 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case types.CART_ADD_PRODUCT:
-      if (
-        state.cart.listProducts.includes(
-          state.products.all.find((elem) => elem._id === action.payload)
-        )
-      ) {
-        return {
-          ...state,
-        };
-      } else {
-        return {
-          ...state,
-          cart: {
-            ...state.cart,
-            listProducts: utils.addProductToCart(state, action.payload),
-          },
-        };
-      }
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          listProducts: utils.addProductToCart(state, action.payload),
+        },
+      };
 
     case types.UPDATE_QUANTITY:
       return {
@@ -112,8 +101,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         cart: {
           ...state.cart,
-          listProducts: utils.addProductToCart(state, action.payload),
-          total: action.payload,
           totalPrice: action.payload,
         },
       };
@@ -129,13 +116,26 @@ const rootReducer = (state = initialState, action) => {
         },
       };
 
+    case types.CART_REMOVE_ALL:
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          listProducts: [],
+          totalPrice: 0,
+        },
+      };
+
     case types.ORDER_BY_PRICE:
       return {
         ...state,
         products: {
           ...state.products,
           all: utils.orderPrice(state.products.all, action.payload),
-          searchResults: utils.orderPrice(state.products.searchResults,action.payload),
+          searchResults: utils.orderPrice(
+            state.products.searchResults,
+            action.payload
+          ),
           filtered: utils.orderPrice(state.products.filtered, action.payload),
         },
       };
@@ -157,57 +157,63 @@ const rootReducer = (state = initialState, action) => {
         dataState: utils.filterByCategoryState(action.payload),
         products: {
           ...state.products,
-          filtered: utils.filterByPriceRange(state.products.all, action.payload),
+          filtered: utils.filterByPriceRange(
+            state.products.all,
+            action.payload
+          ),
         },
       };
-    
-    case USER_SIGNIN_REQUEST:
-      return { 
+
+    case userTypes.USER_SIGNIN_REQUEST:
+      return {
         ...state,
-        loading: true
-        };
-          
-    case USER_SIGNIN_SUCCESS:
-      return { 
-        ...state,
-        loading: false, 
-        userInfo: action.payload 
+        loading: true,
       };
 
-    case USER_SIGNIN_FAIL:
-      return { 
+    case userTypes.USER_SIGNIN_SUCCESS:
+      return {
         ...state,
-        loading: false, 
-        signinError: action.payload
+        loading: false,
+        userInfo: action.payload,
       };
 
-    case USER_SIGNOUT:
+    case userTypes.USER_SIGNIN_FAIL:
+      return {
+        ...state,
+        loading: false,
+        signinError: action.payload,
+      };
+
+    case userTypes.USER_SIGNOUT:
       return {
         ...state,
         userInfo: null,
-        cart: {}
+        cart: {
+          listProducts: [],
+          totalPrice: 0,
+        },
       };
 
-    case USER_SIGNUP_REQUEST:
-      return { 
+    case userTypes.USER_SIGNUP_REQUEST:
+      return {
         ...state,
-        loading: true
-        };
-          
-    case USER_SIGNUP_SUCCESS:
-      return { 
-        ...state,
-        loading: false, 
-        userInfo: action.payload 
+        loading: true,
       };
 
-    case USER_SIGNUP_FAIL:
-      return { 
+    case userTypes.USER_SIGNUP_SUCCESS:
+      return {
         ...state,
-        loading: false, 
-        signupError: action.payload
+        loading: false,
+        userInfo: action.payload,
       };
-  
+
+    case userTypes.USER_SIGNUP_FAIL:
+      return {
+        ...state,
+        loading: false,
+        signupError: action.payload,
+      };
+
     default:
       return state;
   }

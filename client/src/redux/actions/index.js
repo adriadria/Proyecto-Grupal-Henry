@@ -125,6 +125,12 @@ export const removeFromCart = (id) => {
   };
 };
 
+export const removeAll = () => {
+  return {
+    type: types.CART_REMOVE_ALL,
+  };
+};
+
 export const updateQuantity = (payload) => {
   return {
     type: types.UPDATE_QUANTITY,
