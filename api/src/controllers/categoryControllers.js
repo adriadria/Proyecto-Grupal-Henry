@@ -4,7 +4,9 @@ const Category = require('../models/Category');
 
 async function getCategories(_req, res, next) {
     try {
-        const categories = await Category.find();
+        const categories = await Category.find()
+        .populate('products')
+        .exec();
         return res.send(categories);
     } catch (error) {
         next(error);
@@ -14,7 +16,9 @@ async function getCategories(_req, res, next) {
 async function getCategory(req, res, next) {
     const { id } = req.params;
     try {
-        const category = await Category.findById(id);
+        const category = await Category.findById(id)
+        .populate('products')
+        .exec();
         if (category) {
             return res.json(category);
         }
