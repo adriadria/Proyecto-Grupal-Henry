@@ -43,7 +43,7 @@ const NavBar = ({ setOrder }) => {
   const handleFilterRangePrice = (e) => {
     dispatch(orderByRangePrice(e.target.value));
     //console.log(e.target.value)
-    //setOrder(e.target.value);
+    setOrder(e.target.value);
   };
 
 

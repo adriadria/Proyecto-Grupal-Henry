@@ -9,7 +9,7 @@ export const renderRelatedComponent = ({
   orderError,
   bookingStep,
   handleChange,
-  handleSubmit,
+  handleSubmit2,
   checkoutData,
   handleBackStep,
   handleNextStep,
@@ -23,7 +23,7 @@ export const renderRelatedComponent = ({
           user={user}
           orderInfo={orderInfo}
           checkoutData={checkoutData}
-          handleSubmit={handleSubmit}
+          handleSubmit2={handleSubmit2}
           handleChange={handleChange}
           handleSelectChange={handleSelectChange}
         />

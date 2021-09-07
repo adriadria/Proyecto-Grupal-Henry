@@ -12,7 +12,7 @@ const Products = () => {
   var searchArr = useSelector((state) => state.products.searchResults);
   var filtered = useSelector((state) => state.products.filtered);
   var dataState = useSelector((state) => state.dataState);
-  //console.log(showData)
+  console.log(dataState)
 
   if (dataState === "all") showData = productsArr;
   else if (dataState === "search") showData = searchArr;
