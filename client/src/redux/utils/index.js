@@ -17,9 +17,10 @@ const filterByPriceRange = (state, range) => {
 };
 
 const filterByCategory = (allProducts, option) => {
+  const copyState = allProducts
   return option === "all_categories"
     ? allProducts
-    : allProducts.filter(({ categories }) => categories.includes(option));
+    : copyState.filter(({ categories }) => categories.includes(option));
 };
 
 const filterByCategoryState = (option) => {
