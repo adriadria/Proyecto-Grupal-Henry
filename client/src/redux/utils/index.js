@@ -11,15 +11,16 @@ const orderPrice = (arr, option) => {
   }
 };
 
-const filterByPriceRange = (state, rango) => {
-  const [min,max] = rango.split('-')
+const filterByPriceRange = (state, range) => {
+  const [min, max] = range.split("-");
   return state.filter(({ price }) => price >= min && price <= max);
 };
 
 const filterByCategory = (allProducts, option) => {
+  const copyState = allProducts
   return option === "all_categories"
     ? allProducts
-    : allProducts.filter(({ categories }) => categories.includes(option));
+    : copyState.filter(({ categories }) => categories.includes(option));
 };
 
 const filterByCategoryState = (option) => {
@@ -28,7 +29,7 @@ const filterByCategoryState = (option) => {
 
 const addProductToCart = (state, id) => {
   const product = state.products.all.find((elem) => elem._id === id);
-  if (product && state.cart.listProducts.includes(product)) {
+  if (product && state.cart.listProducts?.find((elem) => elem._id === id)) {
     return state.cart.listProducts;
   } else if (product) {
     product.quantity = 1;
